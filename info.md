@@ -28,7 +28,7 @@ We strongly recommend you book accommodation as soon as possible as it does get 
 		target="_blank">rivieraweymouth.co.uk</a></p>
 <p style="padding-left: 30px; text-align: justify;">The Rivier Hotel in Weymouth is an Art Deco hotel with comfortable modern rooms. The hotel is about 20 minutes away from
 	the castle. We will organise transportation back to the hotel in the evening. The hotel have offered a 10% discount if
-	you mention you are from Chris and Katie&#8217;s wedding party. The 10% discount is included in the prices below.</p>
+	you mention you are from Andrea y Diego&#8217;s wedding party. The 10% discount is included in the prices below.</p>
 <p style="padding-left: 30px;">Contact number: 01305 836600</p>
 <p style="padding-left: 30px;"><strong>Standard Double/Twin</strong> &#8211; £71.10 per night room only or £80.10 including breakfast.</p>
 <p style="padding-left: 30px;"><strong>Seaview Double/Twin</strong> &#8211; £80.10 per night room only or £89.10 including breakfast.</p>

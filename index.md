@@ -17,5 +17,5 @@ Two weeks later, after the ring had been buried deep inside the smelliest of soc
 
 Katie still hasn’t verbally answered the question yet but Chris took the ferociously nodding head as a yes. They then went and enjoyed some champagne at the bar a little further up the beach. The following day, Chris utterly destroyed Katie at mini golf putting to bed any rumour that she had once beaten him whilst on holiday in Skegness.
 			
-<img class="size-medium wp-image-28 aligncenter" src="images/IMG_20150514_190228-300x225.jpg" alt="Chris and Katie" width="300" height="225" srcset="images/IMG_20150514_190228-300x225.jpg 300w, images/IMG_20150514_190228-1024x768.jpg 1024w" sizes="(max-width: 300px) 100vw, 300px" />
+<img class="size-medium wp-image-28 aligncenter" src="images/IMG_20150514_190228-300x225.jpg" alt="Andrea y Diego" width="300" height="225" srcset="images/IMG_20150514_190228-300x225.jpg 300w, images/IMG_20150514_190228-1024x768.jpg 1024w" sizes="(max-width: 300px) 100vw, 300px" />
 
