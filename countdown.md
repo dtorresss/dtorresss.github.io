@@ -17,8 +17,14 @@ permalink: /countdown
 <p id="countdown"> </p>
 
 <script>
-	var wedding  = moment("2027-07-10 12:00:00").countdown().toString();
-	document.getElementById("countdown").innerHTML = "The wedding was " + wedding + " ago.";
+  var fechaBoda = moment("2027-07-10 12:00:00");
+  var ahora = moment();
+
+  var texto = fechaBoda.isAfter(ahora)
+    ? "Faltan " + ahora.countdown(fechaBoda).toString() + " para la boda."
+    : "La boda será dentro de " + fechaBoda.countdown(ahora).toString() + "!";
+
+  document.getElementById("countdown").innerHTML = texto;
 </script>
 
 </article>
