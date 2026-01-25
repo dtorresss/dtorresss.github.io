@@ -19,8 +19,8 @@
             }
 
             if (typeof options.expires === 'number') {
-                var días = options.expires, t = options.expires = new Date();
-                t.setDate(t.getDate() + días);
+                var days = options.expires, t = options.expires = new Date();
+                t.setDate(t.getDate() + days);
             }
 
             value = String(value);

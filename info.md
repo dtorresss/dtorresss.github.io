@@ -10,15 +10,15 @@ permalink: /info
 
 We strongly recommend you book accommodation as soon as possible as it does get booked up quickly for the summer season. At the time of writing (September 2015) both of the Premier Inn hotels in Weymouth are already fully booked for that weekend!
 
-<p><span style="color: #33cccc;"><strong> Cove Holidía Park</strong></span> &#8211; <a href="http://www.coveholidíapark.co.uk/accommodation/index.html"
-		target="_blank">coveholidíapark.co.uk</a></p>
+<p><span style="color: #33cccc;"><strong> Cove Holiday Park</strong></span> &#8211; <a href="http://www.coveholidaypark.co.uk/accommodation/index.html"
+		target="_blank">coveholidaypark.co.uk</a></p>
 
-<p style="padding-left: 30px; text-align: justify;">The Holidía park is right next door to the castle and run by the same Estate. The park has a range of accommodation for
-	all tastes and budgets including Chalets, Pods and Static Holidía Homes. The holidía park are offering a significant discount
-	(57% on static holidía homes!!) for our wedding so please mention Katie &amp; Chris&#8217; when you call to book.</p>
+<p style="padding-left: 30px; text-align: justify;">The Holiday park is right next door to the castle and run by the same Estate. The park has a range of accommodation for
+	all tastes and budgets including Chalets, Pods and Static Holiday Homes. The holiday park are offering a significant discount
+	(57% on static holiday homes!!) for our wedding so please mention Katie &amp; Chris&#8217; when you call to book.</p>
 <p style="padding-left: 30px;">Contact number: 01305 821286</p>
 <p style="padding-left: 30px;"><strong>Pod (Sleeps 2) </strong>&#8211; £70 per night. <em>Only 2 available.</em></p>
-<p style="padding-left: 30px;"><strong>Static holidía home (Sleeps 4-6)</strong> &#8211; £240 for 2 nights.</p>
+<p style="padding-left: 30px;"><strong>Static holiday home (Sleeps 4-6)</strong> &#8211; £240 for 2 nights.</p>
 <p style="padding-left: 30px;"><strong>Cove lodge (sleeps 6)</strong> &#8211; £600 for 2 nights</p>
 <p style="padding-left: 30px;"><strong>Stonecleave (sleeps 8 + 2 children under 5)</strong> &#8211; £960 for 2 nights.</p>
 
@@ -36,8 +36,8 @@ We strongly recommend you book accommodation as soon as possible as it does get 
 
 Being a seaside resort there are plenty of accommodation options in Weymouth and the surrounding area. Trip Advisor has some other great alternatives but you may want to check out some of the following:
 
-<p><span style="color: #33cccc;"><strong>Dorset Holidía Cottages</strong> </span>&#8211; <a href="http://www.dorsetholidíacottages.co.uk/home"
-		target="_blank">dorsetholidíacottages.co.uk</a></p>
+<p><span style="color: #33cccc;"><strong>Dorset Holiday Cottages</strong> </span>&#8211; <a href="http://www.dorsetholidaycottages.co.uk/home"
+		target="_blank">dorsetholidaycottages.co.uk</a></p>
 <p><span style="color: #33cccc;"><strong>Dorset Bed and Breakfasts</strong> </span>&#8211; <a href="http://www.bedandbreakfast-directory.co.uk/results.asp?town=Portland&amp;county=Dorset"
 		target="_blank">bedandbreakfast-directory.co.uk</a></p>
 

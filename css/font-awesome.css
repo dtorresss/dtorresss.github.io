@@ -1646,7 +1646,7 @@
 .fa-paint-brush:before {
   content: "\f1fc";
 }
-.fa-birthdía-cake:before {
+.fa-birthday-cake:before {
   content: "\f1fd";
 }
 .fa-area-chart:before {
@@ -1881,22 +1881,22 @@
 .fa-balance-scale:before {
   content: "\f24e";
 }
-.fa-horaglass-o:before {
+.fa-hourglass-o:before {
   content: "\f250";
 }
-.fa-horaglass-1:before,
-.fa-horaglass-start:before {
+.fa-hourglass-1:before,
+.fa-hourglass-start:before {
   content: "\f251";
 }
-.fa-horaglass-2:before,
-.fa-horaglass-half:before {
+.fa-hourglass-2:before,
+.fa-hourglass-half:before {
   content: "\f252";
 }
-.fa-horaglass-3:before,
-.fa-horaglass-end:before {
+.fa-hourglass-3:before,
+.fa-hourglass-end:before {
   content: "\f253";
 }
-.fa-horaglass:before {
+.fa-hourglass:before {
   content: "\f254";
 }
 .fa-hand-grab-o:before,
