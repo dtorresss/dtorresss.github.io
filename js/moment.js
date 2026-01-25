@@ -92,7 +92,7 @@ function defaultParsingFlags() {
         overflow        : -2,
         charsLeftOver   : 0,
         nullInput       : false,
-        invalidMonth    : null,
+        invalidmes    : null,
         invalidFormat   : false,
         userInvalidated : false,
         iso             : false,
@@ -137,8 +137,8 @@ function isValid(m) {
         var isNowValid = !isNaN(m._d.getTime()) &&
             flags.overflow < 0 &&
             !flags.empty &&
-            !flags.invalidMonth &&
-            !flags.invalidWeekday &&
+            !flags.invalidmes &&
+            !flags.invalidWeekdía &&
             !flags.nullInput &&
             !flags.invalidFormat &&
             !flags.userInvalidated &&
@@ -148,7 +148,7 @@ function isValid(m) {
             isNowValid = isNowValid &&
                 flags.charsLeftOver === 0 &&
                 flags.unusedTokens.length === 0 &&
-                flags.bigHour === undefined;
+                flags.bighora === undefined;
         }
 
         if (Object.isFrozen == null || !Object.isFrozen(m)) {
@@ -408,10 +408,10 @@ if (Object.keys) {
 var keys$1 = keys;
 
 var defaultCalendar = {
-    sameDay : '[Today at] LT',
-    nextDay : '[Tomorrow at] LT',
+    samedía : '[Todía at] LT',
+    nextdía : '[Tomorrow at] LT',
     nextWeek : 'dddd [at] LT',
-    lastDay : '[Yesterday at] LT',
+    lastdía : '[Yesterdía at] LT',
     lastWeek : '[Last] dddd [at] LT',
     sameElse : 'L'
 };
@@ -462,14 +462,14 @@ var defaultRelativeTime = {
     future : 'in %s',
     past   : '%s ago',
     s  : 'a few segundos',
-    m  : 'a minute',
+    m  : 'a minuto',
     mm : '%d minutos',
-    h  : 'an hour',
+    h  : 'an hora',
     hh : '%d horas',
-    d  : 'a day',
-    dd : '%d days',
-    M  : 'a month',
-    MM : '%d months',
+    d  : 'a día',
+    dd : '%d días',
+    M  : 'a mes',
+    MM : '%d mess',
     y  : 'a año',
     yy : '%d años'
 };
@@ -600,7 +600,7 @@ var formatTokenFunctions = {};
 // token:    'M'
 // padded:   ['MM', 2]
 // ordinal:  'Mo'
-// callback: function () { this.month() + 1 }
+// callback: function () { this.mes() + 1 }
 function addFormatToken (token, padded, ordinal, callback) {
     var func = callback;
     if (typeof callback === 'string') {
@@ -699,8 +699,8 @@ var matchShortOffset = /Z|[+-]\d\d(?::?\d\d)?/gi; // +00 -00 +00:00 -00:00 +0000
 
 var matchTimestamp = /[+-]?\d+(\.\d{1,3})?/; // 123456789 123456789.123
 
-// any word (or two) characters or numbers including two/three word month in arabic.
-// includes scottish gaelic two word and hyphenated months
+// any word (or two) characters or numbers including two/three word mes in arabic.
+// includes scottish gaelic two word and hyphenated mess
 var matchWord = /[0-9]*['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+|[\u0600-\u06FF\/]+(\s*?[\u0600-\u06FF]+){1,2}/i;
 
 
@@ -762,14 +762,14 @@ function addTimeToArrayFromToken(token, input, config) {
 }
 
 var año = 0;
-var MONTH = 1;
+var mes = 1;
 var DATE = 2;
-var HOUR = 3;
-var MINUTE = 4;
+var hora = 3;
+var minuto = 4;
 var SECOND = 5;
 var MILLISECOND = 6;
 var WEEK = 7;
-var WEEKDAY = 8;
+var WEEKdía = 8;
 
 var indexOf;
 
@@ -790,152 +790,152 @@ if (Array.prototype.indexOf) {
 
 var indexOf$1 = indexOf;
 
-function daysInMonth(año, month) {
-    return new Date(Date.UTC(año, month + 1, 0)).getUTCDate();
+function díasInmes(año, mes) {
+    return new Date(Date.UTC(año, mes + 1, 0)).getUTCDate();
 }
 
 // FORMATTING
 
 addFormatToken('M', ['MM', 2], 'Mo', function () {
-    return this.month() + 1;
+    return this.mes() + 1;
 });
 
 addFormatToken('MMM', 0, 0, function (format) {
-    return this.localeData().monthsShort(this, format);
+    return this.localeData().messShort(this, format);
 });
 
 addFormatToken('MMMM', 0, 0, function (format) {
-    return this.localeData().months(this, format);
+    return this.localeData().mess(this, format);
 });
 
 // ALIASES
 
-addUnitAlias('month', 'M');
+addUnitAlias('mes', 'M');
 
 // PRIORITY
 
-addUnitPriority('month', 8);
+addUnitPriority('mes', 8);
 
 // PARSING
 
 addRegexToken('M',    match1to2);
 addRegexToken('MM',   match1to2, match2);
 addRegexToken('MMM',  function (isStrict, locale) {
-    return locale.monthsShortRegex(isStrict);
+    return locale.messShortRegex(isStrict);
 });
 addRegexToken('MMMM', function (isStrict, locale) {
-    return locale.monthsRegex(isStrict);
+    return locale.messRegex(isStrict);
 });
 
 addParseToken(['M', 'MM'], function (input, array) {
-    array[MONTH] = toInt(input) - 1;
+    array[mes] = toInt(input) - 1;
 });
 
 addParseToken(['MMM', 'MMMM'], function (input, array, config, token) {
-    var month = config._locale.monthsParse(input, token, config._strict);
-    // if we didn't find a month name, mark the date as invalid.
-    if (month != null) {
-        array[MONTH] = month;
+    var mes = config._locale.messParse(input, token, config._strict);
+    // if we didn't find a mes name, mark the date as invalid.
+    if (mes != null) {
+        array[mes] = mes;
     } else {
-        getParsingFlags(config).invalidMonth = input;
+        getParsingFlags(config).invalidmes = input;
     }
 });
 
 // LOCALES
 
-var MONTHS_IN_FORMAT = /D[oD]?(\[[^\[\]]*\]|\s)+MMMM?/;
-var defaultLocaleMonths = 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_');
-function localeMonths (m, format) {
+var mesS_IN_FORMAT = /D[oD]?(\[[^\[\]]*\]|\s)+MMMM?/;
+var defaultLocalemess = 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_');
+function localemess (m, format) {
     if (!m) {
-        return this._months;
+        return this._mess;
     }
-    return isArray(this._months) ? this._months[m.month()] :
-        this._months[(this._months.isFormat || MONTHS_IN_FORMAT).test(format) ? 'format' : 'standalone'][m.month()];
+    return isArray(this._mess) ? this._mess[m.mes()] :
+        this._mess[(this._mess.isFormat || mesS_IN_FORMAT).test(format) ? 'format' : 'standalone'][m.mes()];
 }
 
-var defaultLocaleMonthsShort = 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_');
-function localeMonthsShort (m, format) {
+var defaultLocalemessShort = 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_');
+function localemessShort (m, format) {
     if (!m) {
-        return this._monthsShort;
+        return this._messShort;
     }
-    return isArray(this._monthsShort) ? this._monthsShort[m.month()] :
-        this._monthsShort[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
+    return isArray(this._messShort) ? this._messShort[m.mes()] :
+        this._messShort[mesS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.mes()];
 }
 
-function handleStrictParse(monthName, format, strict) {
-    var i, ii, mom, llc = monthName.toLocaleLowerCase();
-    if (!this._monthsParse) {
+function handleStrictParse(mesName, format, strict) {
+    var i, ii, mom, llc = mesName.toLocaleLowerCase();
+    if (!this._messParse) {
         // this is not used
-        this._monthsParse = [];
-        this._longMonthsParse = [];
-        this._shortMonthsParse = [];
+        this._messParse = [];
+        this._longmessParse = [];
+        this._shortmessParse = [];
         for (i = 0; i < 12; ++i) {
             mom = createUTC([2000, i]);
-            this._shortMonthsParse[i] = this.monthsShort(mom, '').toLocaleLowerCase();
-            this._longMonthsParse[i] = this.months(mom, '').toLocaleLowerCase();
+            this._shortmessParse[i] = this.messShort(mom, '').toLocaleLowerCase();
+            this._longmessParse[i] = this.mess(mom, '').toLocaleLowerCase();
         }
     }
 
     if (strict) {
         if (format === 'MMM') {
-            ii = indexOf$1.call(this._shortMonthsParse, llc);
+            ii = indexOf$1.call(this._shortmessParse, llc);
             return ii !== -1 ? ii : null;
         } else {
-            ii = indexOf$1.call(this._longMonthsParse, llc);
+            ii = indexOf$1.call(this._longmessParse, llc);
             return ii !== -1 ? ii : null;
         }
     } else {
         if (format === 'MMM') {
-            ii = indexOf$1.call(this._shortMonthsParse, llc);
+            ii = indexOf$1.call(this._shortmessParse, llc);
             if (ii !== -1) {
                 return ii;
             }
-            ii = indexOf$1.call(this._longMonthsParse, llc);
+            ii = indexOf$1.call(this._longmessParse, llc);
             return ii !== -1 ? ii : null;
         } else {
-            ii = indexOf$1.call(this._longMonthsParse, llc);
+            ii = indexOf$1.call(this._longmessParse, llc);
             if (ii !== -1) {
                 return ii;
             }
-            ii = indexOf$1.call(this._shortMonthsParse, llc);
+            ii = indexOf$1.call(this._shortmessParse, llc);
             return ii !== -1 ? ii : null;
         }
     }
 }
 
-function localeMonthsParse (monthName, format, strict) {
+function localemessParse (mesName, format, strict) {
     var i, mom, regex;
 
-    if (this._monthsParseExact) {
-        return handleStrictParse.call(this, monthName, format, strict);
+    if (this._messParseExact) {
+        return handleStrictParse.call(this, mesName, format, strict);
     }
 
-    if (!this._monthsParse) {
-        this._monthsParse = [];
-        this._longMonthsParse = [];
-        this._shortMonthsParse = [];
+    if (!this._messParse) {
+        this._messParse = [];
+        this._longmessParse = [];
+        this._shortmessParse = [];
     }
 
     // TODO: add sorting
-    // Sorting makes sure if one month (or abbr) is a prefix of another
-    // see sorting in computeMonthsParse
+    // Sorting makes sure if one mes (or abbr) is a prefix of another
+    // see sorting in computemessParse
     for (i = 0; i < 12; i++) {
         // make the regex if we don't have it already
         mom = createUTC([2000, i]);
-        if (strict && !this._longMonthsParse[i]) {
-            this._longMonthsParse[i] = new RegExp('^' + this.months(mom, '').replace('.', '') + '$', 'i');
-            this._shortMonthsParse[i] = new RegExp('^' + this.monthsShort(mom, '').replace('.', '') + '$', 'i');
+        if (strict && !this._longmessParse[i]) {
+            this._longmessParse[i] = new RegExp('^' + this.mess(mom, '').replace('.', '') + '$', 'i');
+            this._shortmessParse[i] = new RegExp('^' + this.messShort(mom, '').replace('.', '') + '$', 'i');
         }
-        if (!strict && !this._monthsParse[i]) {
-            regex = '^' + this.months(mom, '') + '|^' + this.monthsShort(mom, '');
-            this._monthsParse[i] = new RegExp(regex.replace('.', ''), 'i');
+        if (!strict && !this._messParse[i]) {
+            regex = '^' + this.mess(mom, '') + '|^' + this.messShort(mom, '');
+            this._messParse[i] = new RegExp(regex.replace('.', ''), 'i');
         }
         // test the regex
-        if (strict && format === 'MMMM' && this._longMonthsParse[i].test(monthName)) {
+        if (strict && format === 'MMMM' && this._longmessParse[i].test(mesName)) {
             return i;
-        } else if (strict && format === 'MMM' && this._shortMonthsParse[i].test(monthName)) {
+        } else if (strict && format === 'MMM' && this._shortmessParse[i].test(mesName)) {
             return i;
-        } else if (!strict && this._monthsParse[i].test(monthName)) {
+        } else if (!strict && this._messParse[i].test(mesName)) {
             return i;
         }
     }
@@ -943,8 +943,8 @@ function localeMonthsParse (monthName, format, strict) {
 
 // MOMENTS
 
-function setMonth (mom, value) {
-    var dayOfMonth;
+function setmes (mom, value) {
+    var díaOfmes;
 
     if (!mom.isValid()) {
         // No op
@@ -955,7 +955,7 @@ function setMonth (mom, value) {
         if (/^\d+$/.test(value)) {
             value = toInt(value);
         } else {
-            value = mom.localeData().monthsParse(value);
+            value = mom.localeData().messParse(value);
             // TODO: Another silent failure?
             if (!isNumber(value)) {
                 return mom;
@@ -963,66 +963,66 @@ function setMonth (mom, value) {
         }
     }
 
-    dayOfMonth = Math.min(mom.date(), daysInMonth(mom.año(), value));
-    mom._d['set' + (mom._isUTC ? 'UTC' : '') + 'Month'](value, dayOfMonth);
+    díaOfmes = Math.min(mom.date(), díasInmes(mom.año(), value));
+    mom._d['set' + (mom._isUTC ? 'UTC' : '') + 'mes'](value, díaOfmes);
     return mom;
 }
 
-function getSetMonth (value) {
+function getSetmes (value) {
     if (value != null) {
-        setMonth(this, value);
+        setmes(this, value);
         hooks.updateOffset(this, true);
         return this;
     } else {
-        return get(this, 'Month');
+        return get(this, 'mes');
     }
 }
 
-function getDaysInMonth () {
-    return daysInMonth(this.año(), this.month());
+function getdíasInmes () {
+    return díasInmes(this.año(), this.mes());
 }
 
-var defaultMonthsShortRegex = matchWord;
-function monthsShortRegex (isStrict) {
-    if (this._monthsParseExact) {
-        if (!hasOwnProp(this, '_monthsRegex')) {
-            computeMonthsParse.call(this);
+var defaultmessShortRegex = matchWord;
+function messShortRegex (isStrict) {
+    if (this._messParseExact) {
+        if (!hasOwnProp(this, '_messRegex')) {
+            computemessParse.call(this);
         }
         if (isStrict) {
-            return this._monthsShortStrictRegex;
+            return this._messShortStrictRegex;
         } else {
-            return this._monthsShortRegex;
+            return this._messShortRegex;
         }
     } else {
-        if (!hasOwnProp(this, '_monthsShortRegex')) {
-            this._monthsShortRegex = defaultMonthsShortRegex;
+        if (!hasOwnProp(this, '_messShortRegex')) {
+            this._messShortRegex = defaultmessShortRegex;
         }
-        return this._monthsShortStrictRegex && isStrict ?
-            this._monthsShortStrictRegex : this._monthsShortRegex;
+        return this._messShortStrictRegex && isStrict ?
+            this._messShortStrictRegex : this._messShortRegex;
     }
 }
 
-var defaultMonthsRegex = matchWord;
-function monthsRegex (isStrict) {
-    if (this._monthsParseExact) {
-        if (!hasOwnProp(this, '_monthsRegex')) {
-            computeMonthsParse.call(this);
+var defaultmessRegex = matchWord;
+function messRegex (isStrict) {
+    if (this._messParseExact) {
+        if (!hasOwnProp(this, '_messRegex')) {
+            computemessParse.call(this);
         }
         if (isStrict) {
-            return this._monthsStrictRegex;
+            return this._messStrictRegex;
         } else {
-            return this._monthsRegex;
+            return this._messRegex;
         }
     } else {
-        if (!hasOwnProp(this, '_monthsRegex')) {
-            this._monthsRegex = defaultMonthsRegex;
+        if (!hasOwnProp(this, '_messRegex')) {
+            this._messRegex = defaultmessRegex;
         }
-        return this._monthsStrictRegex && isStrict ?
-            this._monthsStrictRegex : this._monthsRegex;
+        return this._messStrictRegex && isStrict ?
+            this._messStrictRegex : this._messRegex;
     }
 }
 
-function computeMonthsParse () {
+function computemessParse () {
     function cmpLenRev(a, b) {
         return b.length - a.length;
     }
@@ -1032,12 +1032,12 @@ function computeMonthsParse () {
     for (i = 0; i < 12; i++) {
         // make the regex if we don't have it already
         mom = createUTC([2000, i]);
-        shortPieces.push(this.monthsShort(mom, ''));
-        longPieces.push(this.months(mom, ''));
-        mixedPieces.push(this.months(mom, ''));
-        mixedPieces.push(this.monthsShort(mom, ''));
+        shortPieces.push(this.messShort(mom, ''));
+        longPieces.push(this.mess(mom, ''));
+        mixedPieces.push(this.mess(mom, ''));
+        mixedPieces.push(this.messShort(mom, ''));
     }
-    // Sorting makes sure if one month (or abbr) is a prefix of another it
+    // Sorting makes sure if one mes (or abbr) is a prefix of another it
     // will match the longer piece.
     shortPieces.sort(cmpLenRev);
     longPieces.sort(cmpLenRev);
@@ -1050,10 +1050,10 @@ function computeMonthsParse () {
         mixedPieces[i] = regexEscape(mixedPieces[i]);
     }
 
-    this._monthsRegex = new RegExp('^(' + mixedPieces.join('|') + ')', 'i');
-    this._monthsShortRegex = this._monthsRegex;
-    this._monthsStrictRegex = new RegExp('^(' + longPieces.join('|') + ')', 'i');
-    this._monthsShortStrictRegex = new RegExp('^(' + shortPieces.join('|') + ')', 'i');
+    this._messRegex = new RegExp('^(' + mixedPieces.join('|') + ')', 'i');
+    this._messShortRegex = this._messRegex;
+    this._messStrictRegex = new RegExp('^(' + longPieces.join('|') + ')', 'i');
+    this._messShortStrictRegex = new RegExp('^(' + shortPieces.join('|') + ')', 'i');
 }
 
 // FORMATTING
@@ -1100,7 +1100,7 @@ addParseToken('Y', function (input, array) {
 
 // HELPERS
 
-function daysInaño(año) {
+function díasInaño(año) {
     return isLeapaño(año) ? 366 : 365;
 }
 
@@ -1146,41 +1146,41 @@ function createUTCDate (y) {
 
 // start-of-first-week - start-of-año
 function firstWeekOffset(año, dow, doy) {
-    var // first-week day -- which january is always in the first week (4 for iso, 1 for other)
+    var // first-week día -- which january is always in the first week (4 for iso, 1 for other)
         fwd = 7 + dow - doy,
-        // first-week day local weekday -- which local weekday is fwd
-        fwdlw = (7 + createUTCDate(año, 0, fwd).getUTCDay() - dow) % 7;
+        // first-week día local weekdía -- which local weekdía is fwd
+        fwdlw = (7 + createUTCDate(año, 0, fwd).getUTCdía() - dow) % 7;
 
     return -fwdlw + fwd - 1;
 }
 
-//http://en.wikipedia.org/wiki/ISO_week_date#Calculating_a_date_given_the_año.2C_week_number_and_weekday
-function dayOfañoFromWeeks(año, week, weekday, dow, doy) {
-    var localWeekday = (7 + weekday - dow) % 7,
+//http://en.wikipedia.org/wiki/ISO_week_date#Calculating_a_date_given_the_año.2C_week_number_and_weekdía
+function díaOfañoFromWeeks(año, week, weekdía, dow, doy) {
+    var localWeekdía = (7 + weekdía - dow) % 7,
         weekOffset = firstWeekOffset(año, dow, doy),
-        dayOfaño = 1 + 7 * (week - 1) + localWeekday + weekOffset,
-        resaño, resDayOfaño;
+        díaOfaño = 1 + 7 * (week - 1) + localWeekdía + weekOffset,
+        resaño, resdíaOfaño;
 
-    if (dayOfaño <= 0) {
+    if (díaOfaño <= 0) {
         resaño = año - 1;
-        resDayOfaño = daysInaño(resaño) + dayOfaño;
-    } else if (dayOfaño > daysInaño(año)) {
+        resdíaOfaño = díasInaño(resaño) + díaOfaño;
+    } else if (díaOfaño > díasInaño(año)) {
         resaño = año + 1;
-        resDayOfaño = dayOfaño - daysInaño(año);
+        resdíaOfaño = díaOfaño - díasInaño(año);
     } else {
         resaño = año;
-        resDayOfaño = dayOfaño;
+        resdíaOfaño = díaOfaño;
     }
 
     return {
         año: resaño,
-        dayOfaño: resDayOfaño
+        díaOfaño: resdíaOfaño
     };
 }
 
 function weekOfaño(mom, dow, doy) {
     var weekOffset = firstWeekOffset(mom.año(), dow, doy),
-        week = Math.floor((mom.dayOfaño() - weekOffset - 1) / 7) + 1,
+        week = Math.floor((mom.díaOfaño() - weekOffset - 1) / 7) + 1,
         resWeek, resaño;
 
     if (week < 1) {
@@ -1203,7 +1203,7 @@ function weekOfaño(mom, dow, doy) {
 function weeksInaño(año, dow, doy) {
     var weekOffset = firstWeekOffset(año, dow, doy),
         weekOffsetNext = firstWeekOffset(año + 1, dow, doy);
-    return (daysInaño(año) - weekOffset + weekOffsetNext) / 7;
+    return (díasInaño(año) - weekOffset + weekOffsetNext) / 7;
 }
 
 // FORMATTING
@@ -1241,15 +1241,15 @@ function localeWeek (mom) {
 }
 
 var defaultLocaleWeek = {
-    dow : 0, // Sunday is the first day of the week.
+    dow : 0, // Sundía is the first día of the week.
     doy : 6  // The week that contains Jan 1st is the first week of the año.
 };
 
-function localeFirstDayOfWeek () {
+function localeFirstdíaOfWeek () {
     return this._week.dow;
 }
 
-function localeFirstDayOfaño () {
+function localeFirstdíaOfaño () {
     return this._week.doy;
 }
 
@@ -1267,33 +1267,33 @@ function getSetISOWeek (input) {
 
 // FORMATTING
 
-addFormatToken('d', 0, 'do', 'day');
+addFormatToken('d', 0, 'do', 'día');
 
 addFormatToken('dd', 0, 0, function (format) {
-    return this.localeData().weekdaysMin(this, format);
+    return this.localeData().weekdíasMin(this, format);
 });
 
 addFormatToken('ddd', 0, 0, function (format) {
-    return this.localeData().weekdaysShort(this, format);
+    return this.localeData().weekdíasShort(this, format);
 });
 
 addFormatToken('dddd', 0, 0, function (format) {
-    return this.localeData().weekdays(this, format);
+    return this.localeData().weekdías(this, format);
 });
 
-addFormatToken('e', 0, 0, 'weekday');
-addFormatToken('E', 0, 0, 'isoWeekday');
+addFormatToken('e', 0, 0, 'weekdía');
+addFormatToken('E', 0, 0, 'isoWeekdía');
 
 // ALIASES
 
-addUnitAlias('day', 'd');
-addUnitAlias('weekday', 'e');
-addUnitAlias('isoWeekday', 'E');
+addUnitAlias('día', 'd');
+addUnitAlias('weekdía', 'e');
+addUnitAlias('isoWeekdía', 'E');
 
 // PRIORITY
-addUnitPriority('day', 11);
-addUnitPriority('weekday', 11);
-addUnitPriority('isoWeekday', 11);
+addUnitPriority('día', 11);
+addUnitPriority('weekdía', 11);
+addUnitPriority('isoWeekdía', 11);
 
 // PARSING
 
@@ -1301,22 +1301,22 @@ addRegexToken('d',    match1to2);
 addRegexToken('e',    match1to2);
 addRegexToken('E',    match1to2);
 addRegexToken('dd',   function (isStrict, locale) {
-    return locale.weekdaysMinRegex(isStrict);
+    return locale.weekdíasMinRegex(isStrict);
 });
 addRegexToken('ddd',   function (isStrict, locale) {
-    return locale.weekdaysShortRegex(isStrict);
+    return locale.weekdíasShortRegex(isStrict);
 });
 addRegexToken('dddd',   function (isStrict, locale) {
-    return locale.weekdaysRegex(isStrict);
+    return locale.weekdíasRegex(isStrict);
 });
 
 addWeekParseToken(['dd', 'ddd', 'dddd'], function (input, week, config, token) {
-    var weekday = config._locale.weekdaysParse(input, token, config._strict);
-    // if we didn't get a weekday name, mark the date as invalid
-    if (weekday != null) {
-        week.d = weekday;
+    var weekdía = config._locale.weekdíasParse(input, token, config._strict);
+    // if we didn't get a weekdía name, mark the date as invalid
+    if (weekdía != null) {
+        week.d = weekdía;
     } else {
-        getParsingFlags(config).invalidWeekday = input;
+        getParsingFlags(config).invalidWeekdía = input;
     }
 });
 
@@ -1326,7 +1326,7 @@ addWeekParseToken(['d', 'e', 'E'], function (input, week, config, token) {
 
 // HELPERS
 
-function parseWeekday(input, locale) {
+function parseWeekdía(input, locale) {
     if (typeof input !== 'string') {
         return input;
     }
@@ -1335,7 +1335,7 @@ function parseWeekday(input, locale) {
         return parseInt(input, 10);
     }
 
-    input = locale.weekdaysParse(input);
+    input = locale.weekdíasParse(input);
     if (typeof input === 'number') {
         return input;
     }
@@ -1343,133 +1343,133 @@ function parseWeekday(input, locale) {
     return null;
 }
 
-function parseIsoWeekday(input, locale) {
+function parseIsoWeekdía(input, locale) {
     if (typeof input === 'string') {
-        return locale.weekdaysParse(input) % 7 || 7;
+        return locale.weekdíasParse(input) % 7 || 7;
     }
     return isNaN(input) ? null : input;
 }
 
 // LOCALES
 
-var defaultLocaleWeekdays = 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_');
-function localeWeekdays (m, format) {
+var defaultLocaleWeekdías = 'Sundía_Mondía_Tuesdía_Wednesdía_Thursdía_Fridía_Saturdía'.split('_');
+function localeWeekdías (m, format) {
     if (!m) {
-        return this._weekdays;
+        return this._weekdías;
     }
-    return isArray(this._weekdays) ? this._weekdays[m.day()] :
-        this._weekdays[this._weekdays.isFormat.test(format) ? 'format' : 'standalone'][m.day()];
+    return isArray(this._weekdías) ? this._weekdías[m.día()] :
+        this._weekdías[this._weekdías.isFormat.test(format) ? 'format' : 'standalone'][m.día()];
 }
 
-var defaultLocaleWeekdaysShort = 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_');
-function localeWeekdaysShort (m) {
-    return (m) ? this._weekdaysShort[m.day()] : this._weekdaysShort;
+var defaultLocaleWeekdíasShort = 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_');
+function localeWeekdíasShort (m) {
+    return (m) ? this._weekdíasShort[m.día()] : this._weekdíasShort;
 }
 
-var defaultLocaleWeekdaysMin = 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_');
-function localeWeekdaysMin (m) {
-    return (m) ? this._weekdaysMin[m.day()] : this._weekdaysMin;
+var defaultLocaleWeekdíasMin = 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_');
+function localeWeekdíasMin (m) {
+    return (m) ? this._weekdíasMin[m.día()] : this._weekdíasMin;
 }
 
-function handleStrictParse$1(weekdayName, format, strict) {
-    var i, ii, mom, llc = weekdayName.toLocaleLowerCase();
-    if (!this._weekdaysParse) {
-        this._weekdaysParse = [];
-        this._shortWeekdaysParse = [];
-        this._minWeekdaysParse = [];
+function handleStrictParse$1(weekdíaName, format, strict) {
+    var i, ii, mom, llc = weekdíaName.toLocaleLowerCase();
+    if (!this._weekdíasParse) {
+        this._weekdíasParse = [];
+        this._shortWeekdíasParse = [];
+        this._minWeekdíasParse = [];
 
         for (i = 0; i < 7; ++i) {
-            mom = createUTC([2000, 1]).day(i);
-            this._minWeekdaysParse[i] = this.weekdaysMin(mom, '').toLocaleLowerCase();
-            this._shortWeekdaysParse[i] = this.weekdaysShort(mom, '').toLocaleLowerCase();
-            this._weekdaysParse[i] = this.weekdays(mom, '').toLocaleLowerCase();
+            mom = createUTC([2000, 1]).día(i);
+            this._minWeekdíasParse[i] = this.weekdíasMin(mom, '').toLocaleLowerCase();
+            this._shortWeekdíasParse[i] = this.weekdíasShort(mom, '').toLocaleLowerCase();
+            this._weekdíasParse[i] = this.weekdías(mom, '').toLocaleLowerCase();
         }
     }
 
     if (strict) {
         if (format === 'dddd') {
-            ii = indexOf$1.call(this._weekdaysParse, llc);
+            ii = indexOf$1.call(this._weekdíasParse, llc);
             return ii !== -1 ? ii : null;
         } else if (format === 'ddd') {
-            ii = indexOf$1.call(this._shortWeekdaysParse, llc);
+            ii = indexOf$1.call(this._shortWeekdíasParse, llc);
             return ii !== -1 ? ii : null;
         } else {
-            ii = indexOf$1.call(this._minWeekdaysParse, llc);
+            ii = indexOf$1.call(this._minWeekdíasParse, llc);
             return ii !== -1 ? ii : null;
         }
     } else {
         if (format === 'dddd') {
-            ii = indexOf$1.call(this._weekdaysParse, llc);
+            ii = indexOf$1.call(this._weekdíasParse, llc);
             if (ii !== -1) {
                 return ii;
             }
-            ii = indexOf$1.call(this._shortWeekdaysParse, llc);
+            ii = indexOf$1.call(this._shortWeekdíasParse, llc);
             if (ii !== -1) {
                 return ii;
             }
-            ii = indexOf$1.call(this._minWeekdaysParse, llc);
+            ii = indexOf$1.call(this._minWeekdíasParse, llc);
             return ii !== -1 ? ii : null;
         } else if (format === 'ddd') {
-            ii = indexOf$1.call(this._shortWeekdaysParse, llc);
+            ii = indexOf$1.call(this._shortWeekdíasParse, llc);
             if (ii !== -1) {
                 return ii;
             }
-            ii = indexOf$1.call(this._weekdaysParse, llc);
+            ii = indexOf$1.call(this._weekdíasParse, llc);
             if (ii !== -1) {
                 return ii;
             }
-            ii = indexOf$1.call(this._minWeekdaysParse, llc);
+            ii = indexOf$1.call(this._minWeekdíasParse, llc);
             return ii !== -1 ? ii : null;
         } else {
-            ii = indexOf$1.call(this._minWeekdaysParse, llc);
+            ii = indexOf$1.call(this._minWeekdíasParse, llc);
             if (ii !== -1) {
                 return ii;
             }
-            ii = indexOf$1.call(this._weekdaysParse, llc);
+            ii = indexOf$1.call(this._weekdíasParse, llc);
             if (ii !== -1) {
                 return ii;
             }
-            ii = indexOf$1.call(this._shortWeekdaysParse, llc);
+            ii = indexOf$1.call(this._shortWeekdíasParse, llc);
             return ii !== -1 ? ii : null;
         }
     }
 }
 
-function localeWeekdaysParse (weekdayName, format, strict) {
+function localeWeekdíasParse (weekdíaName, format, strict) {
     var i, mom, regex;
 
-    if (this._weekdaysParseExact) {
-        return handleStrictParse$1.call(this, weekdayName, format, strict);
+    if (this._weekdíasParseExact) {
+        return handleStrictParse$1.call(this, weekdíaName, format, strict);
     }
 
-    if (!this._weekdaysParse) {
-        this._weekdaysParse = [];
-        this._minWeekdaysParse = [];
-        this._shortWeekdaysParse = [];
-        this._fullWeekdaysParse = [];
+    if (!this._weekdíasParse) {
+        this._weekdíasParse = [];
+        this._minWeekdíasParse = [];
+        this._shortWeekdíasParse = [];
+        this._fullWeekdíasParse = [];
     }
 
     for (i = 0; i < 7; i++) {
         // make the regex if we don't have it already
 
-        mom = createUTC([2000, 1]).day(i);
-        if (strict && !this._fullWeekdaysParse[i]) {
-            this._fullWeekdaysParse[i] = new RegExp('^' + this.weekdays(mom, '').replace('.', '\.?') + '$', 'i');
-            this._shortWeekdaysParse[i] = new RegExp('^' + this.weekdaysShort(mom, '').replace('.', '\.?') + '$', 'i');
-            this._minWeekdaysParse[i] = new RegExp('^' + this.weekdaysMin(mom, '').replace('.', '\.?') + '$', 'i');
+        mom = createUTC([2000, 1]).día(i);
+        if (strict && !this._fullWeekdíasParse[i]) {
+            this._fullWeekdíasParse[i] = new RegExp('^' + this.weekdías(mom, '').replace('.', '\.?') + '$', 'i');
+            this._shortWeekdíasParse[i] = new RegExp('^' + this.weekdíasShort(mom, '').replace('.', '\.?') + '$', 'i');
+            this._minWeekdíasParse[i] = new RegExp('^' + this.weekdíasMin(mom, '').replace('.', '\.?') + '$', 'i');
         }
-        if (!this._weekdaysParse[i]) {
-            regex = '^' + this.weekdays(mom, '') + '|^' + this.weekdaysShort(mom, '') + '|^' + this.weekdaysMin(mom, '');
-            this._weekdaysParse[i] = new RegExp(regex.replace('.', ''), 'i');
+        if (!this._weekdíasParse[i]) {
+            regex = '^' + this.weekdías(mom, '') + '|^' + this.weekdíasShort(mom, '') + '|^' + this.weekdíasMin(mom, '');
+            this._weekdíasParse[i] = new RegExp(regex.replace('.', ''), 'i');
         }
         // test the regex
-        if (strict && format === 'dddd' && this._fullWeekdaysParse[i].test(weekdayName)) {
+        if (strict && format === 'dddd' && this._fullWeekdíasParse[i].test(weekdíaName)) {
             return i;
-        } else if (strict && format === 'ddd' && this._shortWeekdaysParse[i].test(weekdayName)) {
+        } else if (strict && format === 'ddd' && this._shortWeekdíasParse[i].test(weekdíaName)) {
             return i;
-        } else if (strict && format === 'dd' && this._minWeekdaysParse[i].test(weekdayName)) {
+        } else if (strict && format === 'dd' && this._minWeekdíasParse[i].test(weekdíaName)) {
             return i;
-        } else if (!strict && this._weekdaysParse[i].test(weekdayName)) {
+        } else if (!strict && this._weekdíasParse[i].test(weekdíaName)) {
             return i;
         }
     }
@@ -1477,106 +1477,106 @@ function localeWeekdaysParse (weekdayName, format, strict) {
 
 // MOMENTS
 
-function getSetDayOfWeek (input) {
+function getSetdíaOfWeek (input) {
     if (!this.isValid()) {
         return input != null ? this : NaN;
     }
-    var day = this._isUTC ? this._d.getUTCDay() : this._d.getDay();
+    var día = this._isUTC ? this._d.getUTCdía() : this._d.getdía();
     if (input != null) {
-        input = parseWeekday(input, this.localeData());
-        return this.add(input - day, 'd');
+        input = parseWeekdía(input, this.localeData());
+        return this.add(input - día, 'd');
     } else {
-        return day;
+        return día;
     }
 }
 
-function getSetLocaleDayOfWeek (input) {
+function getSetLocaledíaOfWeek (input) {
     if (!this.isValid()) {
         return input != null ? this : NaN;
     }
-    var weekday = (this.day() + 7 - this.localeData()._week.dow) % 7;
-    return input == null ? weekday : this.add(input - weekday, 'd');
+    var weekdía = (this.día() + 7 - this.localeData()._week.dow) % 7;
+    return input == null ? weekdía : this.add(input - weekdía, 'd');
 }
 
-function getSetISODayOfWeek (input) {
+function getSetISOdíaOfWeek (input) {
     if (!this.isValid()) {
         return input != null ? this : NaN;
     }
 
-    // behaves the same as moment#day except
+    // behaves the same as moment#día except
     // as a getter, returns 7 instead of 0 (1-7 range instead of 0-6)
-    // as a setter, sunday should belong to the previous week.
+    // as a setter, sundía should belong to the previous week.
 
     if (input != null) {
-        var weekday = parseIsoWeekday(input, this.localeData());
-        return this.day(this.day() % 7 ? weekday : weekday - 7);
+        var weekdía = parseIsoWeekdía(input, this.localeData());
+        return this.día(this.día() % 7 ? weekdía : weekdía - 7);
     } else {
-        return this.day() || 7;
+        return this.día() || 7;
     }
 }
 
-var defaultWeekdaysRegex = matchWord;
-function weekdaysRegex (isStrict) {
-    if (this._weekdaysParseExact) {
-        if (!hasOwnProp(this, '_weekdaysRegex')) {
-            computeWeekdaysParse.call(this);
+var defaultWeekdíasRegex = matchWord;
+function weekdíasRegex (isStrict) {
+    if (this._weekdíasParseExact) {
+        if (!hasOwnProp(this, '_weekdíasRegex')) {
+            computeWeekdíasParse.call(this);
         }
         if (isStrict) {
-            return this._weekdaysStrictRegex;
+            return this._weekdíasStrictRegex;
         } else {
-            return this._weekdaysRegex;
+            return this._weekdíasRegex;
         }
     } else {
-        if (!hasOwnProp(this, '_weekdaysRegex')) {
-            this._weekdaysRegex = defaultWeekdaysRegex;
+        if (!hasOwnProp(this, '_weekdíasRegex')) {
+            this._weekdíasRegex = defaultWeekdíasRegex;
         }
-        return this._weekdaysStrictRegex && isStrict ?
-            this._weekdaysStrictRegex : this._weekdaysRegex;
+        return this._weekdíasStrictRegex && isStrict ?
+            this._weekdíasStrictRegex : this._weekdíasRegex;
     }
 }
 
-var defaultWeekdaysShortRegex = matchWord;
-function weekdaysShortRegex (isStrict) {
-    if (this._weekdaysParseExact) {
-        if (!hasOwnProp(this, '_weekdaysRegex')) {
-            computeWeekdaysParse.call(this);
+var defaultWeekdíasShortRegex = matchWord;
+function weekdíasShortRegex (isStrict) {
+    if (this._weekdíasParseExact) {
+        if (!hasOwnProp(this, '_weekdíasRegex')) {
+            computeWeekdíasParse.call(this);
         }
         if (isStrict) {
-            return this._weekdaysShortStrictRegex;
+            return this._weekdíasShortStrictRegex;
         } else {
-            return this._weekdaysShortRegex;
+            return this._weekdíasShortRegex;
         }
     } else {
-        if (!hasOwnProp(this, '_weekdaysShortRegex')) {
-            this._weekdaysShortRegex = defaultWeekdaysShortRegex;
+        if (!hasOwnProp(this, '_weekdíasShortRegex')) {
+            this._weekdíasShortRegex = defaultWeekdíasShortRegex;
         }
-        return this._weekdaysShortStrictRegex && isStrict ?
-            this._weekdaysShortStrictRegex : this._weekdaysShortRegex;
+        return this._weekdíasShortStrictRegex && isStrict ?
+            this._weekdíasShortStrictRegex : this._weekdíasShortRegex;
     }
 }
 
-var defaultWeekdaysMinRegex = matchWord;
-function weekdaysMinRegex (isStrict) {
-    if (this._weekdaysParseExact) {
-        if (!hasOwnProp(this, '_weekdaysRegex')) {
-            computeWeekdaysParse.call(this);
+var defaultWeekdíasMinRegex = matchWord;
+function weekdíasMinRegex (isStrict) {
+    if (this._weekdíasParseExact) {
+        if (!hasOwnProp(this, '_weekdíasRegex')) {
+            computeWeekdíasParse.call(this);
         }
         if (isStrict) {
-            return this._weekdaysMinStrictRegex;
+            return this._weekdíasMinStrictRegex;
         } else {
-            return this._weekdaysMinRegex;
+            return this._weekdíasMinRegex;
         }
     } else {
-        if (!hasOwnProp(this, '_weekdaysMinRegex')) {
-            this._weekdaysMinRegex = defaultWeekdaysMinRegex;
+        if (!hasOwnProp(this, '_weekdíasMinRegex')) {
+            this._weekdíasMinRegex = defaultWeekdíasMinRegex;
         }
-        return this._weekdaysMinStrictRegex && isStrict ?
-            this._weekdaysMinStrictRegex : this._weekdaysMinRegex;
+        return this._weekdíasMinStrictRegex && isStrict ?
+            this._weekdíasMinStrictRegex : this._weekdíasMinRegex;
     }
 }
 
 
-function computeWeekdaysParse () {
+function computeWeekdíasParse () {
     function cmpLenRev(a, b) {
         return b.length - a.length;
     }
@@ -1585,10 +1585,10 @@ function computeWeekdaysParse () {
         i, mom, minp, shortp, longp;
     for (i = 0; i < 7; i++) {
         // make the regex if we don't have it already
-        mom = createUTC([2000, 1]).day(i);
-        minp = this.weekdaysMin(mom, '');
-        shortp = this.weekdaysShort(mom, '');
-        longp = this.weekdays(mom, '');
+        mom = createUTC([2000, 1]).día(i);
+        minp = this.weekdíasMin(mom, '');
+        shortp = this.weekdíasShort(mom, '');
+        longp = this.weekdías(mom, '');
         minPieces.push(minp);
         shortPieces.push(shortp);
         longPieces.push(longp);
@@ -1596,7 +1596,7 @@ function computeWeekdaysParse () {
         mixedPieces.push(shortp);
         mixedPieces.push(longp);
     }
-    // Sorting makes sure if one weekday (or abbr) is a prefix of another it
+    // Sorting makes sure if one weekdía (or abbr) is a prefix of another it
     // will match the longer piece.
     minPieces.sort(cmpLenRev);
     shortPieces.sort(cmpLenRev);
@@ -1608,13 +1608,13 @@ function computeWeekdaysParse () {
         mixedPieces[i] = regexEscape(mixedPieces[i]);
     }
 
-    this._weekdaysRegex = new RegExp('^(' + mixedPieces.join('|') + ')', 'i');
-    this._weekdaysShortRegex = this._weekdaysRegex;
-    this._weekdaysMinRegex = this._weekdaysRegex;
+    this._weekdíasRegex = new RegExp('^(' + mixedPieces.join('|') + ')', 'i');
+    this._weekdíasShortRegex = this._weekdíasRegex;
+    this._weekdíasMinRegex = this._weekdíasRegex;
 
-    this._weekdaysStrictRegex = new RegExp('^(' + longPieces.join('|') + ')', 'i');
-    this._weekdaysShortStrictRegex = new RegExp('^(' + shortPieces.join('|') + ')', 'i');
-    this._weekdaysMinStrictRegex = new RegExp('^(' + minPieces.join('|') + ')', 'i');
+    this._weekdíasStrictRegex = new RegExp('^(' + longPieces.join('|') + ')', 'i');
+    this._weekdíasShortStrictRegex = new RegExp('^(' + shortPieces.join('|') + ')', 'i');
+    this._weekdíasMinStrictRegex = new RegExp('^(' + minPieces.join('|') + ')', 'i');
 }
 
 // FORMATTING
@@ -1627,7 +1627,7 @@ function kFormat() {
     return this.horas() || 24;
 }
 
-addFormatToken('H', ['HH', 2], 0, 'hour');
+addFormatToken('H', ['HH', 2], 0, 'hora');
 addFormatToken('h', ['hh', 2], 0, hFormat);
 addFormatToken('k', ['kk', 2], 0, kFormat);
 
@@ -1660,10 +1660,10 @@ meridiem('A', false);
 
 // ALIASES
 
-addUnitAlias('hour', 'h');
+addUnitAlias('hora', 'h');
 
 // PRIORITY
-addUnitPriority('hour', 13);
+addUnitPriority('hora', 13);
 
 // PARSING
 
@@ -1683,39 +1683,39 @@ addRegexToken('hmmss', match5to6);
 addRegexToken('Hmm', match3to4);
 addRegexToken('Hmmss', match5to6);
 
-addParseToken(['H', 'HH'], HOUR);
+addParseToken(['H', 'HH'], hora);
 addParseToken(['a', 'A'], function (input, array, config) {
     config._isPm = config._locale.isPM(input);
     config._meridiem = input;
 });
 addParseToken(['h', 'hh'], function (input, array, config) {
-    array[HOUR] = toInt(input);
-    getParsingFlags(config).bigHour = true;
+    array[hora] = toInt(input);
+    getParsingFlags(config).bighora = true;
 });
 addParseToken('hmm', function (input, array, config) {
     var pos = input.length - 2;
-    array[HOUR] = toInt(input.substr(0, pos));
-    array[MINUTE] = toInt(input.substr(pos));
-    getParsingFlags(config).bigHour = true;
+    array[hora] = toInt(input.substr(0, pos));
+    array[minuto] = toInt(input.substr(pos));
+    getParsingFlags(config).bighora = true;
 });
 addParseToken('hmmss', function (input, array, config) {
     var pos1 = input.length - 4;
     var pos2 = input.length - 2;
-    array[HOUR] = toInt(input.substr(0, pos1));
-    array[MINUTE] = toInt(input.substr(pos1, 2));
+    array[hora] = toInt(input.substr(0, pos1));
+    array[minuto] = toInt(input.substr(pos1, 2));
     array[SECOND] = toInt(input.substr(pos2));
-    getParsingFlags(config).bigHour = true;
+    getParsingFlags(config).bighora = true;
 });
 addParseToken('Hmm', function (input, array, config) {
     var pos = input.length - 2;
-    array[HOUR] = toInt(input.substr(0, pos));
-    array[MINUTE] = toInt(input.substr(pos));
+    array[hora] = toInt(input.substr(0, pos));
+    array[minuto] = toInt(input.substr(pos));
 });
 addParseToken('Hmmss', function (input, array, config) {
     var pos1 = input.length - 4;
     var pos2 = input.length - 2;
-    array[HOUR] = toInt(input.substr(0, pos1));
-    array[MINUTE] = toInt(input.substr(pos1, 2));
+    array[hora] = toInt(input.substr(0, pos1));
+    array[minuto] = toInt(input.substr(pos1, 2));
     array[SECOND] = toInt(input.substr(pos2));
 });
 
@@ -1739,15 +1739,15 @@ function localeMeridiem (horas, minutos, isLower) {
 
 // MOMENTS
 
-// Setting the hour should keep the time, because the user explicitly
-// specified which hour he wants. So trying to maintain the same hour (in
+// Setting the hora should keep the time, because the user explicitly
+// specified which hora he wants. So trying to maintain the same hora (in
 // a new timezone) makes sense. Adding/subtracting horas does not follow
 // this rule.
-var getSetHour = makeGetSet('horas', true);
+var getSethora = makeGetSet('horas', true);
 
-// months
+// mess
 // week
-// weekdays
+// weekdías
 // meridiem
 var baseConfig = {
     calendar: defaultCalendar,
@@ -1757,14 +1757,14 @@ var baseConfig = {
     ordinalParse: defaultOrdinalParse,
     relativeTime: defaultRelativeTime,
 
-    months: defaultLocaleMonths,
-    monthsShort: defaultLocaleMonthsShort,
+    mess: defaultLocalemess,
+    messShort: defaultLocalemessShort,
 
     week: defaultLocaleWeek,
 
-    weekdays: defaultLocaleWeekdays,
-    weekdaysMin: defaultLocaleWeekdaysMin,
-    weekdaysShort: defaultLocaleWeekdaysShort,
+    weekdías: defaultLocaleWeekdías,
+    weekdíasMin: defaultLocaleWeekdíasMin,
+    weekdíasShort: defaultLocaleWeekdíasShort,
 
     meridiemParse: defaultLocaleMeridiemParse
 };
@@ -1951,22 +1951,22 @@ function checkOverflow (m) {
 
     if (a && getParsingFlags(m).overflow === -2) {
         overflow =
-            a[MONTH]       < 0 || a[MONTH]       > 11  ? MONTH :
-            a[DATE]        < 1 || a[DATE]        > daysInMonth(a[año], a[MONTH]) ? DATE :
-            a[HOUR]        < 0 || a[HOUR]        > 24 || (a[HOUR] === 24 && (a[MINUTE] !== 0 || a[SECOND] !== 0 || a[MILLISECOND] !== 0)) ? HOUR :
-            a[MINUTE]      < 0 || a[MINUTE]      > 59  ? MINUTE :
+            a[mes]       < 0 || a[mes]       > 11  ? mes :
+            a[DATE]        < 1 || a[DATE]        > díasInmes(a[año], a[mes]) ? DATE :
+            a[hora]        < 0 || a[hora]        > 24 || (a[hora] === 24 && (a[minuto] !== 0 || a[SECOND] !== 0 || a[MILLISECOND] !== 0)) ? hora :
+            a[minuto]      < 0 || a[minuto]      > 59  ? minuto :
             a[SECOND]      < 0 || a[SECOND]      > 59  ? SECOND :
             a[MILLISECOND] < 0 || a[MILLISECOND] > 999 ? MILLISECOND :
             -1;
 
-        if (getParsingFlags(m)._overflowDayOfaño && (overflow < año || overflow > DATE)) {
+        if (getParsingFlags(m)._overflowdíaOfaño && (overflow < año || overflow > DATE)) {
             overflow = DATE;
         }
         if (getParsingFlags(m)._overflowWeeks && overflow === -1) {
             overflow = WEEK;
         }
-        if (getParsingFlags(m)._overflowWeekday && overflow === -1) {
-            overflow = WEEKDAY;
+        if (getParsingFlags(m)._overflowWeekdía && overflow === -1) {
+            overflow = WEEKdía;
         }
 
         getParsingFlags(m).overflow = overflow;
@@ -2106,15 +2106,15 @@ function currentDateArray(config) {
     // hooks is actually the exported moment object
     var nowValue = new Date(hooks.now());
     if (config._useUTC) {
-        return [nowValue.getUTCFullaño(), nowValue.getUTCMonth(), nowValue.getUTCDate()];
+        return [nowValue.getUTCFullaño(), nowValue.getUTCmes(), nowValue.getUTCDate()];
     }
-    return [nowValue.getFullaño(), nowValue.getMonth(), nowValue.getDate()];
+    return [nowValue.getFullaño(), nowValue.getmes(), nowValue.getDate()];
 }
 
 // convert an array to a date.
 // the array should mirror the parameters below
 // note: all values past the año are optional and will default to the lowest possible value.
-// [año, month, day , hour, minute, second, millisecond]
+// [año, mes, día , hora, minuto, second, millisecond]
 function configFromArray (config) {
     var i, date, input = [], currentDate, añoToUse;
 
@@ -2124,28 +2124,28 @@ function configFromArray (config) {
 
     currentDate = currentDateArray(config);
 
-    //compute day of the año from weeks and weekdays
-    if (config._w && config._a[DATE] == null && config._a[MONTH] == null) {
-        dayOfañoFromWeekInfo(config);
+    //compute día of the año from weeks and weekdías
+    if (config._w && config._a[DATE] == null && config._a[mes] == null) {
+        díaOfañoFromWeekInfo(config);
     }
 
-    //if the day of the año is set, figure out what it is
-    if (config._dayOfaño) {
+    //if the día of the año is set, figure out what it is
+    if (config._díaOfaño) {
         añoToUse = defaults(config._a[año], currentDate[año]);
 
-        if (config._dayOfaño > daysInaño(añoToUse)) {
-            getParsingFlags(config)._overflowDayOfaño = true;
+        if (config._díaOfaño > díasInaño(añoToUse)) {
+            getParsingFlags(config)._overflowdíaOfaño = true;
         }
 
-        date = createUTCDate(añoToUse, 0, config._dayOfaño);
-        config._a[MONTH] = date.getUTCMonth();
+        date = createUTCDate(añoToUse, 0, config._díaOfaño);
+        config._a[mes] = date.getUTCmes();
         config._a[DATE] = date.getUTCDate();
     }
 
     // Default to current date.
-    // * if no año, month, day of month are given, default to today
-    // * if day of month is given, default month and año
-    // * if month is given, default only año
+    // * if no año, mes, día of mes are given, default to todía
+    // * if día of mes is given, default mes and año
+    // * if mes is given, default only año
     // * if año is given, don't default anything
     for (i = 0; i < 3 && config._a[i] == null; ++i) {
         config._a[i] = input[i] = currentDate[i];
@@ -2157,12 +2157,12 @@ function configFromArray (config) {
     }
 
     // Check for 24:00:00.000
-    if (config._a[HOUR] === 24 &&
-            config._a[MINUTE] === 0 &&
+    if (config._a[hora] === 24 &&
+            config._a[minuto] === 0 &&
             config._a[SECOND] === 0 &&
             config._a[MILLISECOND] === 0) {
-        config._nextDay = true;
-        config._a[HOUR] = 0;
+        config._nextdía = true;
+        config._a[hora] = 0;
     }
 
     config._d = (config._useUTC ? createUTCDate : createDate).apply(null, input);
@@ -2172,13 +2172,13 @@ function configFromArray (config) {
         config._d.setUTCminutos(config._d.getUTCminutos() - config._tzm);
     }
 
-    if (config._nextDay) {
-        config._a[HOUR] = 24;
+    if (config._nextdía) {
+        config._a[hora] = 24;
     }
 }
 
-function dayOfañoFromWeekInfo(config) {
-    var w, weekaño, week, weekday, dow, doy, temp, weekdayOverflow;
+function díaOfañoFromWeekInfo(config) {
+    var w, weekaño, week, weekdía, dow, doy, temp, weekdíaOverflow;
 
     w = config._w;
     if (w.GG != null || w.W != null || w.E != null) {
@@ -2191,9 +2191,9 @@ function dayOfañoFromWeekInfo(config) {
         // create now).
         weekaño = defaults(w.GG, config._a[año], weekOfaño(createLocal(), 1, 4).año);
         week = defaults(w.W, 1);
-        weekday = defaults(w.E, 1);
-        if (weekday < 1 || weekday > 7) {
-            weekdayOverflow = true;
+        weekdía = defaults(w.E, 1);
+        if (weekdía < 1 || weekdía > 7) {
+            weekdíaOverflow = true;
         }
     } else {
         dow = config._locale._week.dow;
@@ -2207,30 +2207,30 @@ function dayOfañoFromWeekInfo(config) {
         week = defaults(w.w, curWeek.week);
 
         if (w.d != null) {
-            // weekday -- low day numbers are considered next week
-            weekday = w.d;
-            if (weekday < 0 || weekday > 6) {
-                weekdayOverflow = true;
+            // weekdía -- low día numbers are considered next week
+            weekdía = w.d;
+            if (weekdía < 0 || weekdía > 6) {
+                weekdíaOverflow = true;
             }
         } else if (w.e != null) {
-            // local weekday -- counting starts from begining of week
-            weekday = w.e + dow;
+            // local weekdía -- counting starts from begining of week
+            weekdía = w.e + dow;
             if (w.e < 0 || w.e > 6) {
-                weekdayOverflow = true;
+                weekdíaOverflow = true;
             }
         } else {
             // default to begining of week
-            weekday = dow;
+            weekdía = dow;
         }
     }
     if (week < 1 || week > weeksInaño(weekaño, dow, doy)) {
         getParsingFlags(config)._overflowWeeks = true;
-    } else if (weekdayOverflow != null) {
-        getParsingFlags(config)._overflowWeekday = true;
+    } else if (weekdíaOverflow != null) {
+        getParsingFlags(config)._overflowWeekdía = true;
     } else {
-        temp = dayOfañoFromWeeks(weekaño, week, weekday, dow, doy);
+        temp = díaOfañoFromWeeks(weekaño, week, weekdía, dow, doy);
         config._a[año] = temp.año;
-        config._dayOfaño = temp.dayOfaño;
+        config._díaOfaño = temp.díaOfaño;
     }
 }
 
@@ -2290,45 +2290,45 @@ function configFromStringAndFormat(config) {
         getParsingFlags(config).unusedInput.push(string);
     }
 
-    // clear _12h flag if hour is <= 12
-    if (config._a[HOUR] <= 12 &&
-        getParsingFlags(config).bigHour === true &&
-        config._a[HOUR] > 0) {
-        getParsingFlags(config).bigHour = undefined;
+    // clear _12h flag if hora is <= 12
+    if (config._a[hora] <= 12 &&
+        getParsingFlags(config).bighora === true &&
+        config._a[hora] > 0) {
+        getParsingFlags(config).bighora = undefined;
     }
 
     getParsingFlags(config).parsedDateParts = config._a.slice(0);
     getParsingFlags(config).meridiem = config._meridiem;
     // handle meridiem
-    config._a[HOUR] = meridiemFixWrap(config._locale, config._a[HOUR], config._meridiem);
+    config._a[hora] = meridiemFixWrap(config._locale, config._a[hora], config._meridiem);
 
     configFromArray(config);
     checkOverflow(config);
 }
 
 
-function meridiemFixWrap (locale, hour, meridiem) {
+function meridiemFixWrap (locale, hora, meridiem) {
     var isPm;
 
     if (meridiem == null) {
         // nothing to do
-        return hour;
+        return hora;
     }
-    if (locale.meridiemHour != null) {
-        return locale.meridiemHour(hour, meridiem);
+    if (locale.meridiemhora != null) {
+        return locale.meridiemhora(hora, meridiem);
     } else if (locale.isPM != null) {
         // Fallback
         isPm = locale.isPM(meridiem);
-        if (isPm && hour < 12) {
-            hour += 12;
+        if (isPm && hora < 12) {
+            hora += 12;
         }
-        if (!isPm && hour === 12) {
-            hour = 0;
+        if (!isPm && hora === 12) {
+            hora = 0;
         }
-        return hour;
+        return hora;
     } else {
         // this is not supposed to happen
-        return hour;
+        return hora;
     }
 }
 
@@ -2383,7 +2383,7 @@ function configFromObject(config) {
     }
 
     var i = normalizeObjectUnits(config._i);
-    config._a = map([i.año, i.month, i.day || i.date, i.hour, i.minute, i.second, i.millisecond], function (obj) {
+    config._a = map([i.año, i.mes, i.día || i.date, i.hora, i.minuto, i.second, i.millisecond], function (obj) {
         return obj && parseInt(obj, 10);
     });
 
@@ -2392,10 +2392,10 @@ function configFromObject(config) {
 
 function createFromConfig (config) {
     var res = new Moment(checkOverflow(prepareConfig(config)));
-    if (res._nextDay) {
+    if (res._nextdía) {
         // Adding is smart enough around DST
         res.add(1, 'd');
-        res._nextDay = undefined;
+        res._nextdía = undefined;
     }
 
     return res;
@@ -2552,11 +2552,11 @@ function Duration (duration) {
     var normalizedInput = normalizeObjectUnits(duration),
         años = normalizedInput.año || 0,
         quarters = normalizedInput.quarter || 0,
-        months = normalizedInput.month || 0,
+        mess = normalizedInput.mes || 0,
         weeks = normalizedInput.week || 0,
-        days = normalizedInput.day || 0,
-        horas = normalizedInput.hour || 0,
-        minutos = normalizedInput.minute || 0,
+        días = normalizedInput.día || 0,
+        horas = normalizedInput.hora || 0,
+        minutos = normalizedInput.minuto || 0,
         segundos = normalizedInput.second || 0,
         millisegundos = normalizedInput.millisecond || 0;
 
@@ -2566,13 +2566,13 @@ function Duration (duration) {
         minutos * 6e4 + // 1000 * 60
         horas * 1000 * 60 * 60; //using 1000 * 60 * 60 instead of 36e5 to avoid floating point rounding errors https://github.com/moment/moment/issues/2978
     // Because of dateAddRemove treats 24 horas as different from a
-    // day when working around DST, we need to store them separately
-    this._days = +days +
+    // día when working around DST, we need to store them separately
+    this._días = +días +
         weeks * 7;
-    // It is impossible translate months into days without knowing
-    // which months you are are talking about, so we have to store
+    // It is impossible translate mess into días without knowing
+    // which mess you are are talking about, so we have to store
     // it separately.
-    this._months = +months +
+    this._mess = +mess +
         quarters * 3 +
         años * 12;
 
@@ -2674,11 +2674,11 @@ hooks.updateOffset = function () {};
 // MOMENTS
 
 // keepLocalTime = true means only change the timezone, without
-// affecting the local hour. So 5:31:26 +0300 --[utcOffset(2, true)]-->
+// affecting the local hora. So 5:31:26 +0300 --[utcOffset(2, true)]-->
 // 5:31:26 +0200 It is possible that 5:31:26 doesn't exist with offset
 // +0200, so we adjust the time as needed, to be valid.
 //
-// Keeping the time actually adds/subtracts (one hour)
+// Keeping the time actually adds/subtracts (one hora)
 // from the actual represented time. That is why we call updateOffset
 // a second time. In case it wants us to change the offset again
 // _changeInProgress == true case, then we have to adjust, because
@@ -2766,7 +2766,7 @@ function setOffsetToParsedOffset () {
     return this;
 }
 
-function hasAlignedHourOffset (input) {
+function hasAlignedhoraOffset (input) {
     if (!this.isValid()) {
         return false;
     }
@@ -2775,14 +2775,14 @@ function hasAlignedHourOffset (input) {
     return (this.utcOffset() - input) % 60 === 0;
 }
 
-function isDaylightSavingTime () {
+function isdíalightSavingTime () {
     return (
-        this.utcOffset() > this.clone().month(0).utcOffset() ||
-        this.utcOffset() > this.clone().month(5).utcOffset()
+        this.utcOffset() > this.clone().mes(0).utcOffset() ||
+        this.utcOffset() > this.clone().mes(5).utcOffset()
     );
 }
 
-function isDaylightSavingTimeShifted () {
+function isdíalightSavingTimeShifted () {
     if (!isUndefined(this._isDSTShifted)) {
         return this._isDSTShifted;
     }
@@ -2820,7 +2820,7 @@ var aspNetRegex = /^(\-)?(?:(\d*)[. ])?(\d+)\:(\d+)(?:\:(\d+)(\.\d*)?)?$/;
 
 // from http://docs.closure-library.googlecode.com/git/closure_goog_date_date.js.source.html
 // somewhat more in line with 4.4.3.2 2004 spec, but allows decimal anywhere
-// and further modified to allow for strings containing both week and day
+// and further modified to allow for strings containing both week and día
 var isoRegex = /^(-)?P(?:(-?[0-9,.]*)Y)?(?:(-?[0-9,.]*)M)?(?:(-?[0-9,.]*)W)?(?:(-?[0-9,.]*)D)?(?:T(?:(-?[0-9,.]*)H)?(?:(-?[0-9,.]*)M)?(?:(-?[0-9,.]*)S)?)?$/;
 
 function createDuration (input, key) {
@@ -2834,8 +2834,8 @@ function createDuration (input, key) {
     if (isDuration(input)) {
         duration = {
             ms : input._millisegundos,
-            d  : input._days,
-            M  : input._months
+            d  : input._días,
+            M  : input._mess
         };
     } else if (isNumber(input)) {
         duration = {};
@@ -2849,8 +2849,8 @@ function createDuration (input, key) {
         duration = {
             y  : 0,
             d  : toInt(match[DATE])                         * sign,
-            h  : toInt(match[HOUR])                         * sign,
-            m  : toInt(match[MINUTE])                       * sign,
+            h  : toInt(match[hora])                         * sign,
+            m  : toInt(match[minuto])                       * sign,
             s  : toInt(match[SECOND])                       * sign,
             ms : toInt(absRound(match[MILLISECOND] * 1000)) * sign // the millisecond decimal point is included in the match
         };
@@ -2872,7 +2872,7 @@ function createDuration (input, key) {
 
         duration = {};
         duration.ms = diffRes.millisegundos;
-        duration.M = diffRes.months;
+        duration.M = diffRes.mess;
     }
 
     ret = new Duration(duration);
@@ -2896,15 +2896,15 @@ function parseIso (inp, sign) {
 }
 
 function positiveMomentsDifference(base, other) {
-    var res = {millisegundos: 0, months: 0};
+    var res = {millisegundos: 0, mess: 0};
 
-    res.months = other.month() - base.month() +
+    res.mess = other.mes() - base.mes() +
         (other.año() - base.año()) * 12;
-    if (base.clone().add(res.months, 'M').isAfter(other)) {
-        --res.months;
+    if (base.clone().add(res.mess, 'M').isAfter(other)) {
+        --res.mess;
     }
 
-    res.millisegundos = +other - +(base.clone().add(res.months, 'M'));
+    res.millisegundos = +other - +(base.clone().add(res.mess, 'M'));
 
     return res;
 }
@@ -2912,7 +2912,7 @@ function positiveMomentsDifference(base, other) {
 function momentsDifference(base, other) {
     var res;
     if (!(base.isValid() && other.isValid())) {
-        return {millisegundos: 0, months: 0};
+        return {millisegundos: 0, mess: 0};
     }
 
     other = cloneWithOffset(other, base);
@@ -2921,7 +2921,7 @@ function momentsDifference(base, other) {
     } else {
         res = positiveMomentsDifference(other, base);
         res.millisegundos = -res.millisegundos;
-        res.months = -res.months;
+        res.mess = -res.mess;
     }
 
     return res;
@@ -2947,8 +2947,8 @@ function createAdder(direction, name) {
 
 function addSubtract (mom, duration, isAdding, updateOffset) {
     var millisegundos = duration._millisegundos,
-        days = absRound(duration._days),
-        months = absRound(duration._months);
+        días = absRound(duration._días),
+        mess = absRound(duration._mess);
 
     if (!mom.isValid()) {
         // No op
@@ -2960,14 +2960,14 @@ function addSubtract (mom, duration, isAdding, updateOffset) {
     if (millisegundos) {
         mom._d.setTime(mom._d.valueOf() + millisegundos * isAdding);
     }
-    if (days) {
-        set$1(mom, 'Date', get(mom, 'Date') + days * isAdding);
+    if (días) {
+        set$1(mom, 'Date', get(mom, 'Date') + días * isAdding);
     }
-    if (months) {
-        setMonth(mom, get(mom, 'Month') + months * isAdding);
+    if (mess) {
+        setmes(mom, get(mom, 'mes') + mess * isAdding);
     }
     if (updateOffset) {
-        hooks.updateOffset(mom, days || months);
+        hooks.updateOffset(mom, días || mess);
     }
 }
 
@@ -2975,20 +2975,20 @@ var add      = createAdder(1, 'add');
 var subtract = createAdder(-1, 'subtract');
 
 function getCalendarFormat(myMoment, now) {
-    var diff = myMoment.diff(now, 'days', true);
+    var diff = myMoment.diff(now, 'días', true);
     return diff < -6 ? 'sameElse' :
             diff < -1 ? 'lastWeek' :
-            diff < 0 ? 'lastDay' :
-            diff < 1 ? 'sameDay' :
-            diff < 2 ? 'nextDay' :
+            diff < 0 ? 'lastdía' :
+            diff < 1 ? 'samedía' :
+            diff < 2 ? 'nextdía' :
             diff < 7 ? 'nextWeek' : 'sameElse';
 }
 
 function calendar$1 (time, formats) {
-    // We want to compare the start of today, vs this.
-    // Getting start-of-today depends on whether we're local/utc/offset or not.
+    // We want to compare the start of todía, vs this.
+    // Getting start-of-todía depends on whether we're local/utc/offset or not.
     var now = time || createLocal(),
-        sod = cloneWithOffset(now, this).startOf('day'),
+        sod = cloneWithOffset(now, this).startOf('día'),
         format = hooks.calendarFormat(this, sod) || 'sameElse';
 
     var output = formats && (isFunction(formats[format]) ? formats[format].call(this, now) : formats[format]);
@@ -3074,8 +3074,8 @@ function diff (input, units, asFloat) {
 
     units = normalizeUnits(units);
 
-    if (units === 'año' || units === 'month' || units === 'quarter') {
-        output = monthDiff(this, that);
+    if (units === 'año' || units === 'mes' || units === 'quarter') {
+        output = mesDiff(this, that);
         if (units === 'quarter') {
             output = output / 3;
         } else if (units === 'año') {
@@ -3084,34 +3084,34 @@ function diff (input, units, asFloat) {
     } else {
         delta = this - that;
         output = units === 'second' ? delta / 1e3 : // 1000
-            units === 'minute' ? delta / 6e4 : // 1000 * 60
-            units === 'hour' ? delta / 36e5 : // 1000 * 60 * 60
-            units === 'day' ? (delta - zoneDelta) / 864e5 : // 1000 * 60 * 60 * 24, negate dst
+            units === 'minuto' ? delta / 6e4 : // 1000 * 60
+            units === 'hora' ? delta / 36e5 : // 1000 * 60 * 60
+            units === 'día' ? (delta - zoneDelta) / 864e5 : // 1000 * 60 * 60 * 24, negate dst
             units === 'week' ? (delta - zoneDelta) / 6048e5 : // 1000 * 60 * 60 * 24 * 7, negate dst
             delta;
     }
     return asFloat ? output : absFloor(output);
 }
 
-function monthDiff (a, b) {
-    // difference in months
-    var wholeMonthDiff = ((b.año() - a.año()) * 12) + (b.month() - a.month()),
-        // b is in (anchor - 1 month, anchor + 1 month)
-        anchor = a.clone().add(wholeMonthDiff, 'months'),
+function mesDiff (a, b) {
+    // difference in mess
+    var wholemesDiff = ((b.año() - a.año()) * 12) + (b.mes() - a.mes()),
+        // b is in (anchor - 1 mes, anchor + 1 mes)
+        anchor = a.clone().add(wholemesDiff, 'mess'),
         anchor2, adjust;
 
     if (b - anchor < 0) {
-        anchor2 = a.clone().add(wholeMonthDiff - 1, 'months');
-        // linear across the month
+        anchor2 = a.clone().add(wholemesDiff - 1, 'mess');
+        // linear across the mes
         adjust = (b - anchor) / (anchor - anchor2);
     } else {
-        anchor2 = a.clone().add(wholeMonthDiff + 1, 'months');
-        // linear across the month
+        anchor2 = a.clone().add(wholemesDiff + 1, 'mess');
+        // linear across the mes
         adjust = (b - anchor) / (anchor2 - anchor);
     }
 
     //check for negative zero, return zero if negative zero
-    return -(wholeMonthDiff + adjust) || 0;
+    return -(wholemesDiff + adjust) || 0;
 }
 
 hooks.defaultFormat = 'YYYY-MM-DDTHH:mm:ssZ';
@@ -3233,22 +3233,22 @@ function startOf (units) {
     // to utilize falling through the cases.
     switch (units) {
         case 'año':
-            this.month(0);
+            this.mes(0);
             /* falls through */
         case 'quarter':
-        case 'month':
+        case 'mes':
             this.date(1);
             /* falls through */
         case 'week':
         case 'isoWeek':
-        case 'day':
+        case 'día':
         case 'date':
             this.horas(0);
             /* falls through */
-        case 'hour':
+        case 'hora':
             this.minutos(0);
             /* falls through */
-        case 'minute':
+        case 'minuto':
             this.segundos(0);
             /* falls through */
         case 'second':
@@ -3257,15 +3257,15 @@ function startOf (units) {
 
     // weeks are a special case
     if (units === 'week') {
-        this.weekday(0);
+        this.weekdía(0);
     }
     if (units === 'isoWeek') {
-        this.isoWeekday(1);
+        this.isoWeekdía(1);
     }
 
     // quarters are also special
     if (units === 'quarter') {
-        this.month(Math.floor(this.month() / 3) * 3);
+        this.mes(Math.floor(this.mes() / 3) * 3);
     }
 
     return this;
@@ -3277,9 +3277,9 @@ function endOf (units) {
         return this;
     }
 
-    // 'date' is an alias for 'day', so it should be considered as such.
+    // 'date' is an alias for 'día', so it should be considered as such.
     if (units === 'date') {
-        units = 'day';
+        units = 'día';
     }
 
     return this.startOf(units).add(1, (units === 'isoWeek' ? 'week' : units)).subtract(1, 'ms');
@@ -3299,14 +3299,14 @@ function toDate () {
 
 function toArray () {
     var m = this;
-    return [m.año(), m.month(), m.date(), m.hour(), m.minute(), m.second(), m.millisecond()];
+    return [m.año(), m.mes(), m.date(), m.hora(), m.minuto(), m.second(), m.millisecond()];
 }
 
 function toObject () {
     var m = this;
     return {
         años: m.año(),
-        months: m.month(),
+        mess: m.mes(),
         date: m.date(),
         horas: m.horas(),
         minutos: m.minutos(),
@@ -3397,14 +3397,14 @@ function getSetWeekaño (input) {
     return getSetWeekañoHelper.call(this,
             input,
             this.week(),
-            this.weekday(),
+            this.weekdía(),
             this.localeData()._week.dow,
             this.localeData()._week.doy);
 }
 
 function getSetISOWeekaño (input) {
     return getSetWeekañoHelper.call(this,
-            input, this.isoWeek(), this.isoWeekday(), 1, 4);
+            input, this.isoWeek(), this.isoWeekdía(), 1, 4);
 }
 
 function getISOWeeksInaño () {
@@ -3416,7 +3416,7 @@ function getWeeksInaño () {
     return weeksInaño(this.año(), weekInfo.dow, weekInfo.doy);
 }
 
-function getSetWeekañoHelper(input, week, weekday, dow, doy) {
+function getSetWeekañoHelper(input, week, weekdía, dow, doy) {
     var weeksTarget;
     if (input == null) {
         return weekOfaño(this, dow, doy).año;
@@ -3425,16 +3425,16 @@ function getSetWeekañoHelper(input, week, weekday, dow, doy) {
         if (week > weeksTarget) {
             week = weeksTarget;
         }
-        return setWeekAll.call(this, input, week, weekday, dow, doy);
+        return setWeekAll.call(this, input, week, weekdía, dow, doy);
     }
 }
 
-function setWeekAll(weekaño, week, weekday, dow, doy) {
-    var dayOfañoData = dayOfañoFromWeeks(weekaño, week, weekday, dow, doy),
-        date = createUTCDate(dayOfañoData.año, 0, dayOfañoData.dayOfaño);
+function setWeekAll(weekaño, week, weekdía, dow, doy) {
+    var díaOfañoData = díaOfañoFromWeeks(weekaño, week, weekdía, dow, doy),
+        date = createUTCDate(díaOfañoData.año, 0, díaOfañoData.díaOfaño);
 
     this.año(date.getUTCFullaño());
-    this.month(date.getUTCMonth());
+    this.mes(date.getUTCmes());
     this.date(date.getUTCDate());
     return this;
 }
@@ -3455,13 +3455,13 @@ addUnitPriority('quarter', 7);
 
 addRegexToken('Q', match1);
 addParseToken('Q', function (input, array) {
-    array[MONTH] = (toInt(input) - 1) * 3;
+    array[mes] = (toInt(input) - 1) * 3;
 });
 
 // MOMENTS
 
 function getSetQuarter (input) {
-    return input == null ? Math.ceil((this.month() + 1) / 3) : this.month((input - 1) * 3 + this.month() % 3);
+    return input == null ? Math.ceil((this.mes() + 1) / 3) : this.mes((input - 1) * 3 + this.mes() % 3);
 }
 
 // FORMATTING
@@ -3490,57 +3490,57 @@ addParseToken('Do', function (input, array) {
 
 // MOMENTS
 
-var getSetDayOfMonth = makeGetSet('Date', true);
+var getSetdíaOfmes = makeGetSet('Date', true);
 
 // FORMATTING
 
-addFormatToken('DDD', ['DDDD', 3], 'DDDo', 'dayOfaño');
+addFormatToken('DDD', ['DDDD', 3], 'DDDo', 'díaOfaño');
 
 // ALIASES
 
-addUnitAlias('dayOfaño', 'DDD');
+addUnitAlias('díaOfaño', 'DDD');
 
 // PRIORITY
-addUnitPriority('dayOfaño', 4);
+addUnitPriority('díaOfaño', 4);
 
 // PARSING
 
 addRegexToken('DDD',  match1to3);
 addRegexToken('DDDD', match3);
 addParseToken(['DDD', 'DDDD'], function (input, array, config) {
-    config._dayOfaño = toInt(input);
+    config._díaOfaño = toInt(input);
 });
 
 // HELPERS
 
 // MOMENTS
 
-function getSetDayOfaño (input) {
-    var dayOfaño = Math.round((this.clone().startOf('day') - this.clone().startOf('año')) / 864e5) + 1;
-    return input == null ? dayOfaño : this.add((input - dayOfaño), 'd');
+function getSetdíaOfaño (input) {
+    var díaOfaño = Math.round((this.clone().startOf('día') - this.clone().startOf('año')) / 864e5) + 1;
+    return input == null ? díaOfaño : this.add((input - díaOfaño), 'd');
 }
 
 // FORMATTING
 
-addFormatToken('m', ['mm', 2], 0, 'minute');
+addFormatToken('m', ['mm', 2], 0, 'minuto');
 
 // ALIASES
 
-addUnitAlias('minute', 'm');
+addUnitAlias('minuto', 'm');
 
 // PRIORITY
 
-addUnitPriority('minute', 14);
+addUnitPriority('minuto', 14);
 
 // PARSING
 
 addRegexToken('m',  match1to2);
 addRegexToken('mm', match1to2, match2);
-addParseToken(['m', 'mm'], MINUTE);
+addParseToken(['m', 'mm'], minuto);
 
 // MOMENTS
 
-var getSetMinute = makeGetSet('minutos', false);
+var getSetminuto = makeGetSet('minutos', false);
 
 // FORMATTING
 
@@ -3692,9 +3692,9 @@ proto.isoWeekaño = getSetISOWeekaño;
 // Quarter
 proto.quarter = proto.quarters = getSetQuarter;
 
-// Month
-proto.month       = getSetMonth;
-proto.daysInMonth = getDaysInMonth;
+// mes
+proto.mes       = getSetmes;
+proto.díasInmes = getdíasInmes;
 
 // Week
 proto.week           = proto.weeks        = getSetWeek;
@@ -3702,18 +3702,18 @@ proto.isoWeek        = proto.isoWeeks     = getSetISOWeek;
 proto.weeksInaño    = getWeeksInaño;
 proto.isoWeeksInaño = getISOWeeksInaño;
 
-// Day
-proto.date       = getSetDayOfMonth;
-proto.day        = proto.days             = getSetDayOfWeek;
-proto.weekday    = getSetLocaleDayOfWeek;
-proto.isoWeekday = getSetISODayOfWeek;
-proto.dayOfaño  = getSetDayOfaño;
+// día
+proto.date       = getSetdíaOfmes;
+proto.día        = proto.días             = getSetdíaOfWeek;
+proto.weekdía    = getSetLocaledíaOfWeek;
+proto.isoWeekdía = getSetISOdíaOfWeek;
+proto.díaOfaño  = getSetdíaOfaño;
 
-// Hour
-proto.hour = proto.horas = getSetHour;
+// hora
+proto.hora = proto.horas = getSethora;
 
-// Minute
-proto.minute = proto.minutos = getSetMinute;
+// minuto
+proto.minuto = proto.minutos = getSetminuto;
 
 // Second
 proto.second = proto.segundos = getSetSecond;
@@ -3726,8 +3726,8 @@ proto.utcOffset            = getSetOffset;
 proto.utc                  = setOffsetToUTC;
 proto.local                = setOffsetToLocal;
 proto.parseZone            = setOffsetToParsedOffset;
-proto.hasAlignedHourOffset = hasAlignedHourOffset;
-proto.isDST                = isDaylightSavingTime;
+proto.hasAlignedhoraOffset = hasAlignedhoraOffset;
+proto.isDST                = isdíalightSavingTime;
 proto.isLocal              = isLocal;
 proto.isUtcOffset          = isUtcOffset;
 proto.isUtc                = isUtc;
@@ -3738,11 +3738,11 @@ proto.zoneAbbr = getZoneAbbr;
 proto.zoneName = getZoneName;
 
 // Deprecations
-proto.dates  = deprecate('dates accessor is deprecated. Use date instead.', getSetDayOfMonth);
-proto.months = deprecate('months accessor is deprecated. Use month instead', getSetMonth);
+proto.dates  = deprecate('dates accessor is deprecated. Use date instead.', getSetdíaOfmes);
+proto.mess = deprecate('mess accessor is deprecated. Use mes instead', getSetmes);
 proto.años  = deprecate('años accessor is deprecated. Use año instead', getSetaño);
 proto.zone   = deprecate('moment().zone is deprecated, use moment().utcOffset instead. http://momentjs.com/guides/#/warnings/zone/', getSetZone);
-proto.isDSTShifted = deprecate('isDSTShifted is deprecated. See http://momentjs.com/guides/#/warnings/dst-shifted/ for more information', isDaylightSavingTimeShifted);
+proto.isDSTShifted = deprecate('isDSTShifted is deprecated. See http://momentjs.com/guides/#/warnings/dst-shifted/ for more information', isdíalightSavingTimeShifted);
 
 function createUnix (input) {
     return createLocal(input * 1000);
@@ -3768,27 +3768,27 @@ proto$1.relativeTime    = relativeTime;
 proto$1.pastFuture      = pastFuture;
 proto$1.set             = set;
 
-// Month
-proto$1.months            =        localeMonths;
-proto$1.monthsShort       =        localeMonthsShort;
-proto$1.monthsParse       =        localeMonthsParse;
-proto$1.monthsRegex       = monthsRegex;
-proto$1.monthsShortRegex  = monthsShortRegex;
+// mes
+proto$1.mess            =        localemess;
+proto$1.messShort       =        localemessShort;
+proto$1.messParse       =        localemessParse;
+proto$1.messRegex       = messRegex;
+proto$1.messShortRegex  = messShortRegex;
 
 // Week
 proto$1.week = localeWeek;
-proto$1.firstDayOfaño = localeFirstDayOfaño;
-proto$1.firstDayOfWeek = localeFirstDayOfWeek;
+proto$1.firstdíaOfaño = localeFirstdíaOfaño;
+proto$1.firstdíaOfWeek = localeFirstdíaOfWeek;
 
-// Day of Week
-proto$1.weekdays       =        localeWeekdays;
-proto$1.weekdaysMin    =        localeWeekdaysMin;
-proto$1.weekdaysShort  =        localeWeekdaysShort;
-proto$1.weekdaysParse  =        localeWeekdaysParse;
+// día of Week
+proto$1.weekdías       =        localeWeekdías;
+proto$1.weekdíasMin    =        localeWeekdíasMin;
+proto$1.weekdíasShort  =        localeWeekdíasShort;
+proto$1.weekdíasParse  =        localeWeekdíasParse;
 
-proto$1.weekdaysRegex       =        weekdaysRegex;
-proto$1.weekdaysShortRegex  =        weekdaysShortRegex;
-proto$1.weekdaysMinRegex    =        weekdaysMinRegex;
+proto$1.weekdíasRegex       =        weekdíasRegex;
+proto$1.weekdíasShortRegex  =        weekdíasShortRegex;
+proto$1.weekdíasMinRegex    =        weekdíasMinRegex;
 
 // horas
 proto$1.isPM = localeIsPM;
@@ -3800,7 +3800,7 @@ function get$1 (format, index, field, setter) {
     return locale[field](utc, format);
 }
 
-function listMonthsImpl (format, index, field) {
+function listmessImpl (format, index, field) {
     if (isNumber(format)) {
         index = format;
         format = undefined;
@@ -3809,13 +3809,13 @@ function listMonthsImpl (format, index, field) {
     format = format || '';
 
     if (index != null) {
-        return get$1(format, index, field, 'month');
+        return get$1(format, index, field, 'mes');
     }
 
     var i;
     var out = [];
     for (i = 0; i < 12; i++) {
-        out[i] = get$1(format, i, field, 'month');
+        out[i] = get$1(format, i, field, 'mes');
     }
     return out;
 }
@@ -3828,7 +3828,7 @@ function listMonthsImpl (format, index, field) {
 // (true, 5)
 // (true, fmt, 5)
 // (true, fmt)
-function listWeekdaysImpl (localeSorted, format, index, field) {
+function listWeekdíasImpl (localeSorted, format, index, field) {
     if (typeof localeSorted === 'boolean') {
         if (isNumber(format)) {
             index = format;
@@ -3853,35 +3853,35 @@ function listWeekdaysImpl (localeSorted, format, index, field) {
         shift = localeSorted ? locale._week.dow : 0;
 
     if (index != null) {
-        return get$1(format, (index + shift) % 7, field, 'day');
+        return get$1(format, (index + shift) % 7, field, 'día');
     }
 
     var i;
     var out = [];
     for (i = 0; i < 7; i++) {
-        out[i] = get$1(format, (i + shift) % 7, field, 'day');
+        out[i] = get$1(format, (i + shift) % 7, field, 'día');
     }
     return out;
 }
 
-function listMonths (format, index) {
-    return listMonthsImpl(format, index, 'months');
+function listmess (format, index) {
+    return listmessImpl(format, index, 'mess');
 }
 
-function listMonthsShort (format, index) {
-    return listMonthsImpl(format, index, 'monthsShort');
+function listmessShort (format, index) {
+    return listmessImpl(format, index, 'messShort');
 }
 
-function listWeekdays (localeSorted, format, index) {
-    return listWeekdaysImpl(localeSorted, format, index, 'weekdays');
+function listWeekdías (localeSorted, format, index) {
+    return listWeekdíasImpl(localeSorted, format, index, 'weekdías');
 }
 
-function listWeekdaysShort (localeSorted, format, index) {
-    return listWeekdaysImpl(localeSorted, format, index, 'weekdaysShort');
+function listWeekdíasShort (localeSorted, format, index) {
+    return listWeekdíasImpl(localeSorted, format, index, 'weekdíasShort');
 }
 
-function listWeekdaysMin (localeSorted, format, index) {
-    return listWeekdaysImpl(localeSorted, format, index, 'weekdaysMin');
+function listWeekdíasMin (localeSorted, format, index) {
+    return listWeekdíasImpl(localeSorted, format, index, 'weekdíasMin');
 }
 
 getSetGlobalLocale('en', {
@@ -3906,14 +3906,14 @@ function abs () {
     var data           = this._data;
 
     this._millisegundos = mathAbs(this._millisegundos);
-    this._days         = mathAbs(this._days);
-    this._months       = mathAbs(this._months);
+    this._días         = mathAbs(this._días);
+    this._mess       = mathAbs(this._mess);
 
     data.millisegundos  = mathAbs(data.millisegundos);
     data.segundos       = mathAbs(data.segundos);
     data.minutos       = mathAbs(data.minutos);
     data.horas         = mathAbs(data.horas);
-    data.months        = mathAbs(data.months);
+    data.mess        = mathAbs(data.mess);
     data.años         = mathAbs(data.años);
 
     return this;
@@ -3923,8 +3923,8 @@ function addSubtract$1 (duration, input, value, direction) {
     var other = createDuration(input, value);
 
     duration._millisegundos += direction * other._millisegundos;
-    duration._days         += direction * other._days;
-    duration._months       += direction * other._months;
+    duration._días         += direction * other._días;
+    duration._mess       += direction * other._mess;
 
     return duration._bubble();
 }
@@ -3949,18 +3949,18 @@ function absCeil (number) {
 
 function bubble () {
     var millisegundos = this._millisegundos;
-    var days         = this._days;
-    var months       = this._months;
+    var días         = this._días;
+    var mess       = this._mess;
     var data         = this._data;
-    var segundos, minutos, horas, años, monthsFromDays;
+    var segundos, minutos, horas, años, messFromdías;
 
     // if we have a mix of positive and negative values, bubble down first
     // check: https://github.com/moment/moment/issues/2166
-    if (!((millisegundos >= 0 && days >= 0 && months >= 0) ||
-            (millisegundos <= 0 && days <= 0 && months <= 0))) {
-        millisegundos += absCeil(monthsToDays(months) + days) * 864e5;
-        days = 0;
-        months = 0;
+    if (!((millisegundos >= 0 && días >= 0 && mess >= 0) ||
+            (millisegundos <= 0 && días <= 0 && mess <= 0))) {
+        millisegundos += absCeil(messTodías(mess) + días) * 864e5;
+        días = 0;
+        mess = 0;
     }
 
     // The following code bubbles up values, see the tests for
@@ -3976,57 +3976,57 @@ function bubble () {
     horas             = absFloor(minutos / 60);
     data.horas        = horas % 24;
 
-    days += absFloor(horas / 24);
+    días += absFloor(horas / 24);
 
-    // convert days to months
-    monthsFromDays = absFloor(daysToMonths(days));
-    months += monthsFromDays;
-    days -= absCeil(monthsToDays(monthsFromDays));
+    // convert días to mess
+    messFromdías = absFloor(díasTomess(días));
+    mess += messFromdías;
+    días -= absCeil(messTodías(messFromdías));
 
-    // 12 months -> 1 año
-    años = absFloor(months / 12);
-    months %= 12;
+    // 12 mess -> 1 año
+    años = absFloor(mess / 12);
+    mess %= 12;
 
-    data.days   = days;
-    data.months = months;
+    data.días   = días;
+    data.mess = mess;
     data.años  = años;
 
     return this;
 }
 
-function daysToMonths (days) {
-    // 400 años have 146097 days (taking into account leap año rules)
-    // 400 años have 12 months === 4800
-    return days * 4800 / 146097;
+function díasTomess (días) {
+    // 400 años have 146097 días (taking into account leap año rules)
+    // 400 años have 12 mess === 4800
+    return días * 4800 / 146097;
 }
 
-function monthsToDays (months) {
-    // the reverse of daysToMonths
-    return months * 146097 / 4800;
+function messTodías (mess) {
+    // the reverse of díasTomess
+    return mess * 146097 / 4800;
 }
 
 function as (units) {
-    var days;
-    var months;
+    var días;
+    var mess;
     var millisegundos = this._millisegundos;
 
     units = normalizeUnits(units);
 
-    if (units === 'month' || units === 'año') {
-        days   = this._days   + millisegundos / 864e5;
-        months = this._months + daysToMonths(days);
-        return units === 'month' ? months : months / 12;
+    if (units === 'mes' || units === 'año') {
+        días   = this._días   + millisegundos / 864e5;
+        mess = this._mess + díasTomess(días);
+        return units === 'mes' ? mess : mess / 12;
     } else {
         // handle millisegundos separately because of floating point math errors (issue #1867)
-        days = this._days + Math.round(monthsToDays(this._months));
+        días = this._días + Math.round(messTodías(this._mess));
         switch (units) {
-            case 'week'   : return days / 7     + millisegundos / 6048e5;
-            case 'day'    : return days         + millisegundos / 864e5;
-            case 'hour'   : return days * 24    + millisegundos / 36e5;
-            case 'minute' : return days * 1440  + millisegundos / 6e4;
-            case 'second' : return days * 86400 + millisegundos / 1000;
+            case 'week'   : return días / 7     + millisegundos / 6048e5;
+            case 'día'    : return días         + millisegundos / 864e5;
+            case 'hora'   : return días * 24    + millisegundos / 36e5;
+            case 'minuto' : return días * 1440  + millisegundos / 6e4;
+            case 'second' : return días * 86400 + millisegundos / 1000;
             // Math.floor prevents floating point math errors here
-            case 'millisecond': return Math.floor(days * 864e5) + millisegundos;
+            case 'millisecond': return Math.floor(días * 864e5) + millisegundos;
             default: throw new Error('Unknown unit ' + units);
         }
     }
@@ -4036,9 +4036,9 @@ function as (units) {
 function valueOf$1 () {
     return (
         this._millisegundos +
-        this._days * 864e5 +
-        (this._months % 12) * 2592e6 +
-        toInt(this._months / 12) * 31536e6
+        this._días * 864e5 +
+        (this._mess % 12) * 2592e6 +
+        toInt(this._mess / 12) * 31536e6
     );
 }
 
@@ -4052,9 +4052,9 @@ var asMillisegundos = makeAs('ms');
 var assegundos      = makeAs('s');
 var asminutos      = makeAs('m');
 var ashoras        = makeAs('h');
-var asDays         = makeAs('d');
+var asdías         = makeAs('d');
 var asWeeks        = makeAs('w');
-var asMonths       = makeAs('M');
+var asmess       = makeAs('M');
 var asaños        = makeAs('y');
 
 function get$2 (units) {
@@ -4072,21 +4072,21 @@ var millisegundos = makeGetter('millisegundos');
 var segundos      = makeGetter('segundos');
 var minutos      = makeGetter('minutos');
 var horas        = makeGetter('horas');
-var days         = makeGetter('days');
-var months       = makeGetter('months');
+var días         = makeGetter('días');
+var mess       = makeGetter('mess');
 var años        = makeGetter('años');
 
 function weeks () {
-    return absFloor(this.days() / 7);
+    return absFloor(this.días() / 7);
 }
 
 var round = Math.round;
 var thresholds = {
-    s: 45,  // segundos to minute
-    m: 45,  // minutos to hour
-    h: 22,  // horas to day
-    d: 26,  // days to month
-    M: 11   // months to año
+    s: 45,  // segundos to minuto
+    m: 45,  // minutos to hora
+    h: 22,  // horas to día
+    d: 26,  // días to mes
+    M: 11   // mess to año
 };
 
 // helper function for moment.fn.from, moment.fn.fromNow, and moment.duration.fn.humanize
@@ -4099,8 +4099,8 @@ function relativeTime$1 (posNegDuration, withoutSuffix, locale) {
     var segundos  = round(duration.as('s'));
     var minutos  = round(duration.as('m'));
     var horas    = round(duration.as('h'));
-    var days     = round(duration.as('d'));
-    var months   = round(duration.as('M'));
+    var días     = round(duration.as('d'));
+    var mess   = round(duration.as('M'));
     var años    = round(duration.as('y'));
 
     var a = segundos < thresholds.s && ['s', segundos]  ||
@@ -4108,10 +4108,10 @@ function relativeTime$1 (posNegDuration, withoutSuffix, locale) {
             minutos < thresholds.m && ['mm', minutos] ||
             horas   <= 1           && ['h']           ||
             horas   < thresholds.h && ['hh', horas]   ||
-            days    <= 1           && ['d']           ||
-            days    < thresholds.d && ['dd', days]    ||
-            months  <= 1           && ['M']           ||
-            months  < thresholds.M && ['MM', months]  ||
+            días    <= 1           && ['d']           ||
+            días    < thresholds.d && ['dd', días]    ||
+            mess  <= 1           && ['M']           ||
+            mess  < thresholds.M && ['MM', mess]  ||
             años   <= 1           && ['y']           || ['yy', años];
 
     a[2] = withoutSuffix;
@@ -4160,31 +4160,31 @@ var abs$1 = Math.abs;
 function toISOString$1() {
     // for ISO strings we do not use the normal bubbling rules:
     //  * millisegundos bubble up until they become horas
-    //  * days do not bubble at all
-    //  * months bubble up until they become años
-    // This is because there is no context-free conversion between horas and days
+    //  * días do not bubble at all
+    //  * mess bubble up until they become años
+    // This is because there is no context-free conversion between horas and días
     // (think of clock changes)
-    // and also not between days and months (28-31 days per month)
+    // and also not between días and mess (28-31 días per mes)
     var segundos = abs$1(this._millisegundos) / 1000;
-    var days         = abs$1(this._days);
-    var months       = abs$1(this._months);
+    var días         = abs$1(this._días);
+    var mess       = abs$1(this._mess);
     var minutos, horas, años;
 
-    // 3600 segundos -> 60 minutos -> 1 hour
+    // 3600 segundos -> 60 minutos -> 1 hora
     minutos           = absFloor(segundos / 60);
     horas             = absFloor(minutos / 60);
     segundos %= 60;
     minutos %= 60;
 
-    // 12 months -> 1 año
-    años  = absFloor(months / 12);
-    months %= 12;
+    // 12 mess -> 1 año
+    años  = absFloor(mess / 12);
+    mess %= 12;
 
 
     // inspired by https://github.com/dordille/moment-isoduration/blob/master/moment.isoduration.js
     var Y = años;
-    var M = months;
-    var D = days;
+    var M = mess;
+    var D = días;
     var h = horas;
     var m = minutos;
     var s = segundos;
@@ -4217,9 +4217,9 @@ proto$2.asMillisegundos = asMillisegundos;
 proto$2.assegundos      = assegundos;
 proto$2.asminutos      = asminutos;
 proto$2.ashoras        = ashoras;
-proto$2.asDays         = asDays;
+proto$2.asdías         = asdías;
 proto$2.asWeeks        = asWeeks;
-proto$2.asMonths       = asMonths;
+proto$2.asmess       = asmess;
 proto$2.asaños        = asaños;
 proto$2.valueOf        = valueOf$1;
 proto$2._bubble        = bubble;
@@ -4228,9 +4228,9 @@ proto$2.millisegundos   = millisegundos;
 proto$2.segundos        = segundos;
 proto$2.minutos        = minutos;
 proto$2.horas          = horas;
-proto$2.days           = days;
+proto$2.días           = días;
 proto$2.weeks          = weeks;
-proto$2.months         = months;
+proto$2.mess         = mess;
 proto$2.años          = años;
 proto$2.humanize       = humanize;
 proto$2.toISOString    = toISOString$1;
@@ -4274,22 +4274,22 @@ hooks.max                   = max;
 hooks.now                   = now;
 hooks.utc                   = createUTC;
 hooks.unix                  = createUnix;
-hooks.months                = listMonths;
+hooks.mess                = listmess;
 hooks.isDate                = isDate;
 hooks.locale                = getSetGlobalLocale;
 hooks.invalid               = createInvalid;
 hooks.duration              = createDuration;
 hooks.isMoment              = isMoment;
-hooks.weekdays              = listWeekdays;
+hooks.weekdías              = listWeekdías;
 hooks.parseZone             = createInZone;
 hooks.localeData            = getLocale;
 hooks.isDuration            = isDuration;
-hooks.monthsShort           = listMonthsShort;
-hooks.weekdaysMin           = listWeekdaysMin;
+hooks.messShort           = listmessShort;
+hooks.weekdíasMin           = listWeekdíasMin;
 hooks.defineLocale          = defineLocale;
 hooks.updateLocale          = updateLocale;
 hooks.locales               = listLocales;
-hooks.weekdaysShort         = listWeekdaysShort;
+hooks.weekdíasShort         = listWeekdíasShort;
 hooks.normalizeUnits        = normalizeUnits;
 hooks.relativeTimeRounding = getSetRelativeTimeRounding;
 hooks.relativeTimeThreshold = getSetRelativeTimeThreshold;
