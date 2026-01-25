@@ -1128,7 +1128,7 @@ function createDate (y, m, d, h, M, s, ms) {
     var date = new Date(y, m, d, h, M, s, ms);
 
     //the date constructor remaps años 0-99 to 1900-1999
-    if (y < 100 && y >= 0 && isFinite(date.getFullaño())) {
+    if (y < 100 && y >= 0 && isFinite(date.getFullYear())) {
         date.setFullaño(y);
     }
     return date;
