@@ -11,6 +11,19 @@ permalink: /countdown
 <script src="js/countdown.min.js"></script>
 <script src="js/moment-countdown.min.js"></script>
 
+<script>
+  // Idioma español
+  moment.locale('es');
+
+  countdown.setLabels(
+    "milisegundo|segundo|minuto|hora|día|semana|mes|año|década|siglo|milenio",
+    "milisegundos|segundos|minutos|horas|días|semanas|meses|años|décadas|siglos|milenios",
+    " y ",
+    ", ",
+    "ahora"
+  );
+</script>
+
 <article id="post-5" class="post-5 page type-page status-publish hentry xfolkentry">
 
 <h3>Wedding Countdown</h3>
@@ -22,7 +35,7 @@ permalink: /countdown
 
   var texto = fechaBoda.isAfter(ahora)
     ? "Faltan " + ahora.countdown(fechaBoda).toString() + " para la boda."
-    : "La boda será dentro de " + fechaBoda.countdown(ahora).toString() + "!";
+    : "La boda fue hace " + fechaBoda.countdown(ahora).toString() + ".";
 
   document.getElementById("countdown").innerHTML = texto;
 </script>
