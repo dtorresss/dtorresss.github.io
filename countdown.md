@@ -16,8 +16,8 @@ permalink: /countdown
   moment.locale('es');
 
   countdown.setLabels(
-    "milisegundo|segundo|minuto|hora|día|semana|mes|año|década|siglo|milenio",
-    "milisegundos|segundos|minutos|horas|días|semanas|meses|años|décadas|siglos|milenios",
+    " milisegundo| segundo| minuto| hora| día| semana| mes| año| década| siglo| milenio",
+    " milisegundos| segundos| minutos| horas| días| semanas| meses| años| décadas| siglos| milenios",
     " y ",
     ", ",
     "ahora"
@@ -26,7 +26,7 @@ permalink: /countdown
 
 <article id="post-5" class="post-5 page type-page status-publish hentry xfolkentry">
 
-<h3>Wedding Countdown</h3>
+<h3>Cuenta atrás para la boda</h3>
 <p id="countdown"> </p>
 
 <script>
