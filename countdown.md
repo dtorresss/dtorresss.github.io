@@ -18,7 +18,7 @@ permalink: /countdown
 
 <script>
 	var wedding  = moment("2027-07-10 12:00:00").countdown().toString();
-	document.getElementById("countdown").innerHTML = "Quedan " + wedding + " para la boda!";
+	document.getElementById("countdown").innerHTML = "The wedding was " + wedding + " ago.";
 </script>
 
 </article>

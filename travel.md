@@ -19,13 +19,13 @@ Portland
 Dorset  
 DT5 1HZ
 
-Travel time from Central London by car is just under 3 horas however please leave plenty of time as traffic can be heavy especially if it is a sunny day!
+Travel time from Central London by car is just under 3 hours however please leave plenty of time as traffic can be heavy especially if it is a sunny day!
 
 ### By Rail
-Weymouth Station is just seven miles away and connects directly with London Waterloo. Travel time by train from Waterloo is 2 horas 40 minutos.
+Weymouth Station is just seven miles away and connects directly with London Waterloo. Travel time by train from Waterloo is 2 hours 40 minutes.
 
 ### By Air
-The closest airport is Bournemouth, which is about an hour away. Pennsylvania Castle also has a helipad which we will be happy to make available for use by prior arrangement. Travel time by helicopter is 47 minutos from Battersea.
+The closest airport is Bournemouth, which is about an hour away. Pennsylvania Castle also has a helipad which we will be happy to make available for use by prior arrangement. Travel time by helicopter is 47 minutes from Battersea.
 
 ### By Sea
 The Castle has berthing available at Portland Marina, which is just four miles from Pennsylvania Castle. Please let us know if you wish to use a berth.

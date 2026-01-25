@@ -26,7 +26,7 @@ We strongly recommend you book accommodation as soon as possible as it does get 
 
 <p><span style="color: #33cccc;"><strong>The Riviera Hotel, Weymouth</strong></span> &#8211; <a href="http://www.rivieraweymouth.co.uk/"
 		target="_blank">rivieraweymouth.co.uk</a></p>
-<p style="padding-left: 30px; text-align: justify;">The Rivier Hotel in Weymouth is an Art Deco hotel with comfortable modern rooms. The hotel is about 20 minutos away from
+<p style="padding-left: 30px; text-align: justify;">The Rivier Hotel in Weymouth is an Art Deco hotel with comfortable modern rooms. The hotel is about 20 minutes away from
 	the castle. We will organise transportation back to the hotel in the evening. The hotel have offered a 10% discount if
 	you mention you are from Chris and Katie&#8217;s wedding party. The 10% discount is included in the prices below.</p>
 <p style="padding-left: 30px;">Contact number: 01305 836600</p>
