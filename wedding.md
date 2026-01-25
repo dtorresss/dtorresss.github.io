@@ -7,7 +7,7 @@ permalink: /wedding
 ---
 ### Saturday 25th June 2016 – The Wedding
 
-The ceremony is at 2pm and since Katie doesn’t plan on making Chris wait too long guests should arrive 30 minutes before to allow time to be seated.
+The ceremony is at 2pm and since Katie doesn’t plan on making Chris wait too long guests should arrive 30 minutos before to allow time to be seated.
 
 The reception is at the same location and will follow the ceremony.
 

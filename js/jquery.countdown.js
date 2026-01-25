@@ -54,19 +54,19 @@
         }
     }
     var DIRECTIVE_KEY_MAP = {
-        Y: "years",
+        Y: "años",
         m: "months",
         n: "daysToMonth",
         d: "daysToWeek",
         w: "weeks",
         W: "weeksToMonth",
-        H: "hours",
-        M: "minutes",
-        S: "seconds",
+        H: "horas",
+        M: "minutos",
+        S: "segundos",
         D: "totalDays",
-        I: "totalHours",
-        N: "totalMinutes",
-        T: "totalSeconds"
+        I: "totalhoras",
+        N: "totalminutos",
+        T: "totalsegundos"
     };
     function escapedRegExp(str) {
         var sanitize = str.toString().replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
@@ -193,20 +193,20 @@
             }
             this.elapsed = now >= this.finalDate;
             this.offset = {
-                seconds: this.totalSecsLeft % 60,
-                minutes: Math.floor(this.totalSecsLeft / 60) % 60,
-                hours: Math.floor(this.totalSecsLeft / 60 / 60) % 24,
+                segundos: this.totalSecsLeft % 60,
+                minutos: Math.floor(this.totalSecsLeft / 60) % 60,
+                horas: Math.floor(this.totalSecsLeft / 60 / 60) % 24,
                 days: Math.floor(this.totalSecsLeft / 60 / 60 / 24) % 7,
                 daysToWeek: Math.floor(this.totalSecsLeft / 60 / 60 / 24) % 7,
                 daysToMonth: Math.floor(this.totalSecsLeft / 60 / 60 / 24 % 30.4368),
                 weeks: Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 7),
                 weeksToMonth: Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 7) % 4,
                 months: Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 30.4368),
-                years: Math.abs(this.finalDate.getFullYear() - now.getFullYear()),
+                años: Math.abs(this.finalDate.getFullaño() - now.getFullaño()),
                 totalDays: Math.floor(this.totalSecsLeft / 60 / 60 / 24),
-                totalHours: Math.floor(this.totalSecsLeft / 60 / 60),
-                totalMinutes: Math.floor(this.totalSecsLeft / 60),
-                totalSeconds: this.totalSecsLeft
+                totalhoras: Math.floor(this.totalSecsLeft / 60 / 60),
+                totalminutos: Math.floor(this.totalSecsLeft / 60),
+                totalsegundos: this.totalSecsLeft
             };
             if (!this.options.elapse && this.totalSecsLeft === 0) {
                 this.stop();
