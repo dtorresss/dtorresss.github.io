@@ -17,7 +17,7 @@ permalink: /countdown
 <p id="countdown"> </p>
 
 <script>
-	var wedding  = moment("2016-06-25 14:00:00").countdown().toString();
+	var wedding  = moment("2027-07-10 12:00:00").countdown().toString();
 	document.getElementById("countdown").innerHTML = "The wedding was " + wedding + " ago.";
 </script>
 
