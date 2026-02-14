@@ -1,7 +1,7 @@
 --- 
 layout: page 
 banner: images/capilla.jpg 
-title: Countdown
+title: Cuenta atrás
 nav_weight: 5
 permalink: /countdown
 ---

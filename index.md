@@ -1,6 +1,6 @@
 --- 
 layout: home 
-title: Welcome
+title: Bienvenidos
 nav_weight: 1
 permalink: /
 ---

@@ -1,7 +1,7 @@
 --- 
 layout: page 
 banner: 'images/durdle.jpeg' 
-title: Local Info 
+title: Donde dormir
 nav_weight: 3 
 permalink: /info
 ---

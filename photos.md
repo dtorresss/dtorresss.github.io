@@ -1,7 +1,7 @@
 ---
 layout: page
 banner: images/capilla.jpg
-title: Photos
+title: Fotos
 nav_weight: 8
 permalink: /photos
 ---

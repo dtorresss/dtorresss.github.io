@@ -1,7 +1,7 @@
 --- 
 layout: page 
 banner: 'images/pennsylvania-castle-3.jpg' 
-title: The Wedding
+title: La Boda
 nav_weight: 2
 permalink: /wedding
 ---
