@@ -7,6 +7,6 @@ permalink: /dresscode
 ---
 
 ### ¡Aviso importante!
-Boda a todo color estilo cóctel, no negro ni blanco porfivor.
+Boda a todo color estilo cóctel, no negro ni colores oscuros porfivor.
 
-<div class="tenor-gif-embed" data-postid="4879600" data-share-method="host" data-aspect-ratio="0.798817" data-width="100%"><a href="https://tenor.com/view/cat-kitten-fabulous-sass-sassy-gif-4879600"></a></div>
+<img src="/images/cat-kitten.gif">
