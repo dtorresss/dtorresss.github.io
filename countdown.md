@@ -1,6 +1,6 @@
 --- 
 layout: page 
-banner: images/cropped-awesome-starfish-background-picture-new-best-hd-wallpapers-of-starfish-2.jpg 
+banner: images/capilla.jpeg 
 title: Countdown
 nav_weight: 5
 permalink: /countdown
