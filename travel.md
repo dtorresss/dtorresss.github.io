@@ -1,6 +1,6 @@
 --- 
 layout: page 
-banner: images/capilla.jpeg 
+banner: images/capilla.jpg 
 title: Travel
 nav_weight: 4
 permalink: /travel

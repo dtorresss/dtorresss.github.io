@@ -1,7 +1,7 @@
 ---
 layout: page
 title: RSVP
-banner: images/capilla.jpeg
+banner: images/capilla.jpg
 nav_weight: 6
 permalink: /rsvp
 ---
