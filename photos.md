@@ -3,7 +3,7 @@ layout: page
 banner: images/capilla.jpg
 title: Fotos
 nav_weight: 8
-permalink: /photos
+permalink: /fotos
 ---
 It is always nice to look back at the photos and remember amazing times. We thought we would share some of our favourite photos of our wedding with you. If you would like full size copies of any of the photos you just need to simply click on a photo to make it full screen, click on the 3 dots in the top right hand corner, then select download. Alternatively, please get in touch and we’d be more than happy to share! If you have any photos of our special day we would love to see them!
 

@@ -3,7 +3,7 @@ layout: page
 banner: 'images/durdle.jpeg' 
 title: Donde dormir
 nav_weight: 3 
-permalink: /info
+permalink: /dormir
 ---
 
 ### Accomodation

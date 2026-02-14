@@ -3,7 +3,7 @@ layout: page
 banner: 'images/pennsylvania-castle-3.jpg' 
 title: La Boda
 nav_weight: 2
-permalink: /wedding
+permalink: /boda
 ---
 ### Saturday 25th June 2016 – The Wedding
 
