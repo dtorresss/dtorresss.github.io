@@ -1,28 +1,19 @@
 --- 
 layout: page 
 banner: 'images/durdle.jpeg' 
-title: Donde dormir
+title: Info Local
 nav_weight: 3 
-permalink: /dormir
+permalink: /local
 ---
 
-### Accomodation
+### Dónde dormir
 
-We strongly recommend you book accommodation as soon as possible as it does get booked up quickly for the summer season. At the time of writing (September 2015) both of the Premier Inn hotels in Weymouth are already fully booked for that weekend!
+Recomendamos reservar con antelación ya que es una zona cotizada en las fechas de la boda. Para ello hay varias opciones que os dejamos a continuación:
 
-<p><span style="color: #33cccc;"><strong> Cove Holiday Park</strong></span> &#8211; <a href="http://www.coveholidaypark.co.uk/accommodation/index.html"
-		target="_blank">coveholidaypark.co.uk</a></p>
+<p><span style="color: #33cccc;"><strong>Casas rurales en AirBnB</strong></span> &#8211; <a href="https://www.airbnb.es/s/O-Grove/homes?refinement_paths%5B%5D=%2Fhomes&place_id=ChIJhWk0XFBALw0RUXffUq_W_Dc&location_bb=Qin%2B6MENuJJCKfOawQ37wQ%3D%3D&acp_id=d0aa42c1-c91d-4d35-902d-44a5769d4342&date_picker_type=flexible_dates&search_type=autocomplete_click"
+		target="_blank">Haz click aquí para buscar opciones por la zona.</a></p>
 
-<p style="padding-left: 30px; text-align: justify;">The Holiday park is right next door to the castle and run by the same Estate. The park has a range of accommodation for
-	all tastes and budgets including Chalets, Pods and Static Holiday Homes. The holiday park are offering a significant discount
-	(57% on static holiday homes!!) for our wedding so please mention Katie &amp; Chris&#8217; when you call to book.</p>
-<p style="padding-left: 30px;">Contact number: 01305 821286</p>
-<p style="padding-left: 30px;"><strong>Pod (Sleeps 2) </strong>&#8211; £70 per night. <em>Only 2 available.</em></p>
-<p style="padding-left: 30px;"><strong>Static holiday home (Sleeps 4-6)</strong> &#8211; £240 for 2 nights.</p>
-<p style="padding-left: 30px;"><strong>Cove lodge (sleeps 6)</strong> &#8211; £600 for 2 nights</p>
-<p style="padding-left: 30px;"><strong>Stonecleave (sleeps 8 + 2 children under 5)</strong> &#8211; £960 for 2 nights.</p>
-
-
+<p style="padding-left: 30px; text-align: justify;">Recomendamos coger alguna casa rural en caso de que seais un grupo grande, ya que suele ser más económico y hay muchas opciones muy bonitas.
 
 <p><span style="color: #33cccc;"><strong>The Riviera Hotel, Weymouth</strong></span> &#8211; <a href="http://www.rivieraweymouth.co.uk/"
 		target="_blank">rivieraweymouth.co.uk</a></p>
@@ -42,12 +33,12 @@ Being a seaside resort there are plenty of accommodation options in Weymouth and
 		target="_blank">bedandbreakfast-directory.co.uk</a></p>
 
 
-### Local Info
+### Qué hacer
 
 There is plenty of things to see and do in the local Weymouth and Portland area. The [visit-dorset](http://www.visit-dorset.com/about-the-area/areas-to-visit/weymouth-and-portland/attractions-in-weymouth-and-portland) website has lots of information about the top things to do. And there is always
 [TripAdvisor](http://www.tripadvisor.co.uk/Tourism-g186261-Dorset_England-Vacations.html).
 
-### Local Eating
+### Dónde Comer
 
 The Crab House Cafe - [crabhousecafe.co.uk](http://crabhousecafe.co.uk/).  
 The Cove House Inn, Portland - [thecovehouseinn.co.uk](http://thecovehouseinn.co.uk/).   
