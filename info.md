@@ -1,6 +1,6 @@
 --- 
 layout: page 
-banner: 'images/durdle.jpeg' 
+banner: 'images/grove.jpg' 
 title: Info Local
 nav_weight: 3 
 permalink: /local
@@ -11,36 +11,28 @@ permalink: /local
 Recomendamos reservar con antelación ya que es una zona cotizada en las fechas de la boda. Para ello hay varias opciones que os dejamos a continuación:
 
 <p><span style="color: #33cccc;"><strong>Casas rurales en AirBnB</strong></span> &#8211; <a href="https://www.airbnb.es/s/O-Grove/homes?refinement_paths%5B%5D=%2Fhomes&place_id=ChIJhWk0XFBALw0RUXffUq_W_Dc&location_bb=Qin%2B6MENuJJCKfOawQ37wQ%3D%3D&acp_id=d0aa42c1-c91d-4d35-902d-44a5769d4342&date_picker_type=flexible_dates&search_type=autocomplete_click"
-		target="_blank">Haz click aquí para buscar opciones por la zona.</a></p>
+		target="_blank">Haz click aquí para ver opciones por la zona.</a></p>
 
-<p style="padding-left: 30px; text-align: justify;">Recomendamos coger alguna casa rural en caso de que seais un grupo grande, ya que suele ser más económico y hay muchas opciones muy bonitas.
+<p style="padding-left: 30px; text-align: justify;">Recomendamos coger alguna casa rural en caso de que seais un grupo grande, ya que suele ser más económico y hay muchas opciones muy bonitas.</p>
 
-<p><span style="color: #33cccc;"><strong>The Riviera Hotel, Weymouth</strong></span> &#8211; <a href="http://www.rivieraweymouth.co.uk/"
-		target="_blank">rivieraweymouth.co.uk</a></p>
-<p style="padding-left: 30px; text-align: justify;">The Rivier Hotel in Weymouth is an Art Deco hotel with comfortable modern rooms. The hotel is about 20 minutes away from
-	the castle. We will organise transportation back to the hotel in the evening. The hotel have offered a 10% discount if
-	you mention you are from Andrea y Diego&#8217;s wedding party. The 10% discount is included in the prices below.</p>
-<p style="padding-left: 30px;">Contact number: 01305 836600</p>
-<p style="padding-left: 30px;"><strong>Standard Double/Twin</strong> &#8211; £71.10 per night room only or £80.10 including breakfast.</p>
-<p style="padding-left: 30px;"><strong>Seaview Double/Twin</strong> &#8211; £80.10 per night room only or £89.10 including breakfast.</p>
-<p style="padding-left: 30px;"><strong>Single room</strong> &#8211; £49.50 per night room only or £54 including breakfast.</p>
-
-Being a seaside resort there are plenty of accommodation options in Weymouth and the surrounding area. Trip Advisor has some other great alternatives but you may want to check out some of the following:
-
-<p><span style="color: #33cccc;"><strong>Dorset Holiday Cottages</strong> </span>&#8211; <a href="http://www.dorsetholidaycottages.co.uk/home"
-		target="_blank">dorsetholidaycottages.co.uk</a></p>
-<p><span style="color: #33cccc;"><strong>Dorset Bed and Breakfasts</strong> </span>&#8211; <a href="http://www.bedandbreakfast-directory.co.uk/results.asp?town=Portland&amp;county=Dorset"
-		target="_blank">bedandbreakfast-directory.co.uk</a></p>
-
+<p><span style="color: #33cccc;"><strong>Hoteles y otras casas rurales en Booking</strong></span> &#8211; <a href="https://www.booking.com/searchresults.es.html?ss=O+Grove%2C+Galicia+%28Pen%C3%ADnsula+de+O+Grove%29%2C+Espa%C3%B1a&efdco=1&label=msn-*_ccyXU4_*XBiFj*3M*qow-79989658705812%3Atikwd-79989834232084%3Aloc-170%3Anes%3Amte%3Alp292707%3Adec%3Acid518941053%3Aagid1279832834469714&aid=2369661&lang=es&sb=1&src_elem=sb&src=index&dest_id=-384554&dest_type=city&ac_position=0&ac_click_type=b&ac_langcode=es&ac_suggestion_list_length=5&search_selected=true&search_pageview_id=70c6428323cf03d4&ac_meta=GhA3MGM2NDI4MzIzY2YwM2Q0IAAoATICZXM6BG8gZ3I%3D&group_adults=2&no_rooms=1&group_children=0"
+		target="_blank">Haz click aquí para ver opciones por la zona.</a></p>
 
 ### Qué hacer
 
-There is plenty of things to see and do in the local Weymouth and Portland area. The [visit-dorset](http://www.visit-dorset.com/about-the-area/areas-to-visit/weymouth-and-portland/attractions-in-weymouth-and-portland) website has lots of information about the top things to do. And there is always
-[TripAdvisor](http://www.tripadvisor.co.uk/Tourism-g186261-Dorset_England-Vacations.html).
+Hay multitud de actividades que hacer para todas las edades. Desde comer mejillones en un barco bailando al son de la Macarena hasta visitar los burros de la Toja o pasar una tarde en las termas o en las preciosas playas con el agua más fría que probaréis jamás (solo para valientes).
+
+Además, os dejamos una Guía Repsol, para que conozcáis lo que más suele visitar la gente: [Guía O Grove](https://www.guiarepsol.com/es/viajar/vamos-de-excursion/que-hacer-ver-comer-o-grove-pontevedra/)
 
 ### Dónde Comer
 
-The Crab House Cafe - [crabhousecafe.co.uk](http://crabhousecafe.co.uk/).  
-The Cove House Inn, Portland - [thecovehouseinn.co.uk](http://thecovehouseinn.co.uk/).   
-The Blue Fish Cafe and Restaurant, Portland - [thebluefishrestaurant.co.uk](http://thebluefishrestaurant.co.uk/).  
-The Boat that Rocks, Portland - [theboatthatrocks.co.uk](http://theboatthatrocks.co.uk/).  
+En el caso que no hagáis caso a nuestra recomendación de ayuno semanal, podéis probar alguno de estos restaurantes típicos de los que saldréis rodando. (Por favor hacernos caso con lo de no comer mucho antes, todo lo que hay en los restaurantes lo comeréis en la boda x100).
+
+Asador O Xoto - [Ubicación](https://maps.app.goo.gl/LaNtBt7DuaS6RDQq8).  
+Bar O Peirao - [Ubicación](https://maps.app.goo.gl/xmhpm2ayvWnXFqA36).   
+Cervecería El Crisol - [Ubicación](https://maps.app.goo.gl/WhM1cqCmfx4q8HJC9).  
+Pizzería Pizz - Bur - [Ubicación](https://maps.app.goo.gl/3M1jrDgeFB3HeYDH9).
+Bar Portiño, café & tapas - [Ubicación](https://maps.app.goo.gl/hQGwuono7gTzYZdC7).
+Restaurante O Forcado - [Ubicación](https://maps.app.goo.gl/sNPmgNhkYTD38o9T6).
+
+A parte de todos estos hay chiringuitos de playa dónde igualmente se come genial.
