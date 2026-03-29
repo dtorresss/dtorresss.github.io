@@ -31,8 +31,8 @@ En el caso que no hagáis caso a nuestra recomendación de ayuno semanal, podéi
 Asador O Xoto - [Ubicación](https://maps.app.goo.gl/LaNtBt7DuaS6RDQq8).  
 Bar O Peirao - [Ubicación](https://maps.app.goo.gl/xmhpm2ayvWnXFqA36).   
 Cervecería El Crisol - [Ubicación](https://maps.app.goo.gl/WhM1cqCmfx4q8HJC9).  
-Pizzería Pizz - Bur - [Ubicación](https://maps.app.goo.gl/3M1jrDgeFB3HeYDH9).
-Bar Portiño, café & tapas - [Ubicación](https://maps.app.goo.gl/hQGwuono7gTzYZdC7).
+Pizzería Pizz - Bur - [Ubicación](https://maps.app.goo.gl/3M1jrDgeFB3HeYDH9).   
+Bar Portiño, café & tapas - [Ubicación](https://maps.app.goo.gl/hQGwuono7gTzYZdC7).   
 Restaurante O Forcado - [Ubicación](https://maps.app.goo.gl/sNPmgNhkYTD38o9T6).
 
 A parte de todos estos hay chiringuitos de playa dónde igualmente se come genial.
