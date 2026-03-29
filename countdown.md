@@ -95,3 +95,5 @@ permalink: /countdown
 </script>
 
 </article>
+
+<img src="/images/giphy.gif" alt="" class="aligncenter size-full" />
