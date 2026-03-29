@@ -93,6 +93,7 @@ permalink: /countdown
   setInterval(actualizarCuenta, 1000);
   actualizarCuenta();
 </script>
+<br>
 <img src="/images/giphy.gif" alt="" class="aligncenter size-full" />
 </article>
 
